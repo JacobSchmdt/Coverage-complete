@@ -94,7 +94,7 @@ body {
 	</script>
   </head>
 <body style="background-color:#D9D9D9">	
-	<form action="/ClientCreation.php" target="_self">
+	<form action="/ClientCreation.php" target="_self" method="POST">
 		<label for="Iname">Name of Insured</label><br>
 		<input type="text" id="Iname" name="Iname" value="insured"><br><br>
 		
@@ -117,17 +117,20 @@ body {
 		<label for="Description">Description:</label><br>
 		<textarea id="Description" name="Description" rows="4" cols="50"></textarea><br>
 		
-		<input type="checkbox" id="Creditconsent" name="Creditconsent" value="Credit Consent">
+		
+		<div class="form-group">
+		<input type="checkbox" id="Creditconsent" name="Consent[]" value="Credit Consent">
 		<label for="Creditconsent">Credit Consent</label><br>
 		
-		<input type="checkbox" id="PrivacyConsent" name="PrivacyConsent" value="Privacy Consent">
+		<input type="checkbox" id="PrivacyConsent" name="Consent[]" value="Privacy Consent">
 		<label for="PrivacyConsent"> Privacy Consent</label><br>
 		
-		<input type="checkbox" id="SRI" name="SRI" value="SRI Coverage Review">
+		<input type="checkbox" id="SRI" name="Consent[]" value="SRI Coverage Review">
 		<label for="SRI">SRI Coverage Review</label><br>
 		
-		<input type="submit" value="Submit">
+		<input type="submit" name="save_multiple_checkbox" class="btnSave" value="Submit">
 		<input type="submit" value="Cancel">
+		</div>
 	</form>
 </body>
 </html>
