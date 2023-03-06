@@ -14,7 +14,7 @@ $consent = $_POST['Consent'];
 
 $allConsent = implode(", ",$consent);
 
-if (empty($nameInsured) && empty($companyName) && empty($location) && empty($business) && empty($description) && empty($consent)) {
+if (empty($nameInsured) || empty($companyName) || empty($location) || empty($business) || empty($description) || empty($consent)) {
     echo "Error: Fields cannot be empty";
   } else {
 
