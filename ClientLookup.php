@@ -171,14 +171,10 @@
 	  die("Connection failed: " . mysqli_connect_error());
 	}   
 
-    if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search')){
-       signIn($conn);
-    }
-
     function clID(){
     $id = $_REQUEST['clCode'];
-    $sql = "SELECT Client_ID FROM client WHERE Client_ID=$id";
-    echo $id;
+//    $sql = "SELECT Client_ID FROM client WHERE Client_ID=$id";
+//    echo $id;
     //$result = mysqli_query($conn, $sql);
    // $row = mysqli_fetch_assoc($result);
 
@@ -190,7 +186,7 @@
     
 
     echo "<div class ='Search'>
-        <form method='post'>
+        <form method='post' action=''>
         <input type='text' id='clCode' name='clCode' placeholder='Client Code'>
         
         <input type='submit' name='submit' value='Search'>
@@ -229,7 +225,15 @@
 
     <tr bgcolor='#D8D8D8'>
 
-    <td>" . clID() . "</td>
+    <td>";
+   if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1){
+       $id = $_REQUEST['clCode'];
+       echo $id;
+       echo "balls";
+   }    
+
+
+    echo "</td>
 
     <td></td>
 
