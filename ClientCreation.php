@@ -8,7 +8,7 @@ if (isset($_POST['save_multiple_checkbox'])) {
 $nameInsured = mysqli_real_escape_string($db, $_POST['Iname']);
 $companyName = mysqli_real_escape_string($db, $_POST['Company']);
 $location = mysqli_real_escape_string($db, $_POST['location']);
-$business = mysqli_real_escape_string($db, $_POST['business']);
+$business = mysqli_real_escape_string($db, $_POST['businessType']);
 $description = mysqli_real_escape_string($db, $_POST['Description']);
 $consent = $_POST['Consent'];
 
