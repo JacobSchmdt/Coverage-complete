@@ -1,4 +1,4 @@
-    body {
+ body {
         background-color: #5168ac;
         color:white;
         text-align: center;
@@ -6,6 +6,7 @@
     }
     div.Image{
         margin-top: 250px;
+		margin-right: 45px;
         justify-content: center;
         display: flex;
         align-items: center;
@@ -32,6 +33,8 @@
         width: 115px;
     }
     input[type=text] {
+		text-align: center;
+		justify-content: center;
         width: 70%;
         padding: 5px 5px;
         box-sizing: border-box;
@@ -43,9 +46,19 @@
         box-sizing: border-box;
         
       }
+	input[type=submit]{
+		margin-left: 65px;
+        background-color: white; 
+        border: none;
+        color: black;
+        padding: 5px 34px;
+        text-align: left;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+        width: 90px;
+	}
     .navbuttons{
         margin-top: 100px;
         margin-left: 0px;
     }
-    
-      
