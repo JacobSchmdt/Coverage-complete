@@ -2,7 +2,7 @@
 session_start(); // Start session
 
 // Check if form is submitted
-if (isset($_POST['login'])) {
+if (isset($_POST['submit'])) {
 
     // Include database connection
     require_once 'db.php';
