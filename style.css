@@ -1,0 +1,226 @@
+    }
+    div.Image{
+        margin-top: 250px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        height: 300px;
+        border: 2px;
+    }
+    div.LoginBox{
+        height: 60px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        
+    }
+    .button{
+        margin-top: 30px; 
+        background-color: white; 
+        border: none;
+        color: black;
+        padding: 5px 34px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 115px;
+    }
+    input[type=text] {
+        width: 70%;
+        padding: 5px 5px;
+        box-sizing: border-box;
+        
+      }
+    input[type=password] {
+        width: 70%;
+        padding: 5px 5px;
+        box-sizing: border-box;
+        
+      }
+    .navbuttons{
+        margin-top: 100px;
+        margin-left: 0px;
+    }
+
+	.button{
+    margin-top: 30px; 
+    background-color: white; 
+    border: none;
+    color: #5168ac;
+    padding: 5px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 50px;
+}
+.button1{
+    margin-top: 30px;
+    margin-left: 117px; 
+    background-color: white; 
+    border: none;
+    color: #5168ac;
+    padding: 5px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 30px;
+}
+.button2{
+    margin-top: 30px;
+    margin-left: 10px; 
+    background-color: white; 
+    border: none;
+    color: white;
+    padding: 5px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 50px;
+}
+
+.flexing{
+    display:flex;
+    width:35%;
+    flex:1;
+    background-color:Black;
+} 
+.table{
+    width: 500px;
+    height: 300px;
+	background-color: lightgrey;
+    color: #5168ac;
+    overflow-y: scroll;
+    border: solid black;
+}
+td{
+	background-color: white;
+    width: 73px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+.button{
+    margin-top: 30px; 
+    background-color: white; 
+    border: none;
+    color: #5168ac;
+    padding: 5px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 50px;
+}
+.button1{
+    margin-top: 30px;
+    margin-left: 117px; 
+    background-color: white; 
+    border: none;
+    color: #5168ac;
+    padding: 5px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 30px;
+}
+.button2{
+    margin-top: 30px;
+    margin-left: 10px; 
+    background-color: white; 
+    border: none;
+    color: white;
+    padding: 5px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 50px;
+}
+
+.flexing{
+    display:flex;
+    width:35%;
+    flex:1;
+    background-color:Black;
+} 
+.table{
+    width: 650px;
+    height: 300px;
+	background-color: lightgrey;
+    color: #5168ac;
+    overflow-y: scroll;
+    border: solid black;
+}
+td{
+	background-color: white;
+    width: 73px;
+    height: 50px;
+    border: 1px solid black;
+}
+  body {
+  background-color: #5168ac;
+  
+  }
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #6591C3;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #000;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
