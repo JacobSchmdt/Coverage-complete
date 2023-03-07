@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client` (
   `Client_ID` int NOT NULL AUTO_INCREMENT,
   `Mailing_Address` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Client_Name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Email_Address` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Phone_Number` int NOT NULL,
   `Credit_Consent` tinyint(1) DEFAULT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE `client` (
 
 /*Data for the table `client` */
 
-insert  into `client`(`Client_ID`,`Mailing_Address`,`Name`,`Email_Address`,`Phone_Number`,`Credit_Consent`,`Privacy_Consent`,`Coverage_Review`,`Notes`) values 
+insert  into `client`(`Client_ID`,`Mailing_Address`,`Client_Name`,`Email_Address`,`Phone_Number`,`Credit_Consent`,`Privacy_Consent`,`Coverage_Review`,`Notes`) values 
 (1,'123 ST','Kevin Chubb','fakeemail.com',12345,1,1,1,'Chubb'),
 (2,'MayorGrath','Pozy','firestone.com',42324748,1,1,1,NULL),
 (3,'College Drive','Barry','barry.cit',59542394,1,1,1,'Barrel');
@@ -164,12 +164,14 @@ CREATE TABLE `policy` (
   `Broker_ID` int NOT NULL,
   `Status` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`Policy_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `policy` */
 
 insert  into `policy`(`Policy_ID`,`Location_ID`,`Broker_ID`,`Status`) values 
-(1,1,1,'used');
+(1,1,1,'used'),
+(2,2,2,'used'),
+(3,3,3,'used');
 
 /*Table structure for table `provider` */
 

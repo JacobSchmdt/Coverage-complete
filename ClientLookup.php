@@ -91,26 +91,27 @@
 
     </tr>
 ";
-$sql = "SELECT Client_ID FROM client";
-$result = $conn->query($sql);
+$sqlSetup = "SELECT Client_ID FROM client";
+$resultSetup = $conn->query($sqlSetup);
 
 if (isset($_POST['searched'])){
 	$id = $_POST['clCode'];
-	line1($id);
-} else if ($result or isset($_POST['reset'])) {
-		while ($row = $result->fetch_assoc())  {
+	searchLine($id);
+} else if ($resultSetup or isset($_POST['reset'])) {
+		while ($row = $resultSetup->fetch_assoc())  {
 			$id = $row['Client_ID'];
-			$func = 'line' . $id;
-			$func($id);
+            lineLoop($id);
 		}
 }
-function line1($id){
+function searchLine($id){
 	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 
     if ($result->num_rows > 0) {
-    echo "<tr><td>"; echo $row['Client_ID']; echo"</td>
+    echo "<tr><td>
+<form method='get' action='CoverageReport.php'>
+<input type='submit' name='searchSub' value='{$row['Client_ID']}'></td>
 	<td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
     <td>"; echo $row['Location_Phone']; echo"</td>
@@ -131,30 +132,15 @@ echo "<tr><td>ERROR</td>
     </tr>";}
 	}
 
-function line2($id){
+function lineLoop($id){
 	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 
     if ($result->num_rows > 0) {
-    echo "<tr><td>"; echo $row['Client_ID']; echo"</td>
-	<td>"; echo $row['Alias']; echo"</td>
-    <td>"; echo $row['Phone_Number']; echo"</td>
-    <td>"; echo $row['Location_Phone']; echo"</td>
-    <td>"; echo $row['Email_Address']; echo "</td>
-    <td>"; echo $row['Mailing_Address'];echo "</td>
-    <td>"; echo $row['Physical_Address']; echo"</td>
-    <td>"; echo $row['Notes']; echo"</td>
-    </tr>";}
-    }
-
-function line3($id){
-	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    $row = mysqli_fetch_assoc($result);
-
-    if ($result->num_rows > 0) {
-    echo "<tr><td>"; echo $row['Client_ID']; echo"</td>
+    echo "<tr><td>
+<form method='get' action='CoverageReport.php'>
+<input type='submit' name='$id' value='$id'></td>
 	<td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
     <td>"; echo $row['Location_Phone']; echo"</td>
@@ -166,65 +152,6 @@ function line3($id){
     }
 	
 	?>
-
-	<td></td>
-
-	<td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    </tr>
-
-    <tr>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    </tr>
-
-    <tr>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-
-
     </table>
 
 
