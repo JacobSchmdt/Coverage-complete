@@ -53,14 +53,14 @@
     }
     echo "<div class ='Search'>
         <form method='post' action=''>
-        <input type='text' id='clCode' name='clCode' placeholder='Client Code' required>
+        <input type='number' id='clCode' name='clCode' placeholder='Client Code' required>
         <input type='submit' name='searched' value='Search'>
         <a class= 'button1' href='ClientCreation.html'>New Client</a>
         <a class= 'button1' href='logOut.php'>Log Out</a>
         </form>
 		
 		<form method='post' action''>
-		<input type='submit' name='reset' value='Reset'>
+		<input type='submit' name='reset' value='View All'>
 		</form>
 		
     </div>
@@ -90,8 +90,6 @@
     <th>Notes</font></th>
 
     </tr>
-
-    <tr>
 ";
 $sql = "SELECT Client_ID FROM client";
 $result = $conn->query($sql);
@@ -106,85 +104,72 @@ if (isset($_POST['searched'])){
 			$func($id);
 		}
 }
-
-echo "<td>";
-	function line1($id){
+function line1($id){
 	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 
-
-    echo "</td>
-	<td>"; echo $row['Client_ID']; echo"</td>
-	
+    if ($result->num_rows > 0) {
+    echo "<tr><td>"; echo $row['Client_ID']; echo"</td>
 	<td></td>
     <td>"; echo $row['Phone_Number']; echo"</td>
     <td></td>
-
     <td>"; echo $row['Email_Address']; echo "</td>
-
     <td>"; echo $row['Mailing_Address'];echo "</td>
-
     <td></td>
-
     <td></td>
-
-
-    </tr>
-
-    <tr>
-    <td>";
-
+    </tr>";
+    }   else{
+echo "<tr><td>ERROR</td>
+<td>NO</td>
+<td>CLIENT</td> 
+<td>CODE</td> 
+<td>FOUND</td>
+<td></td>
+<td></td>
+<td></td>
+    </tr>";}
 	}
-	function line2($id){
+
+function line2($id){
 	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 
-	echo $row['Client_ID']; echo"</td>
-	
+    if ($result->num_rows > 0) {
+    echo "<tr><td>"; echo $row['Client_ID']; echo"</td>
 	<td></td>
     <td>"; echo $row['Phone_Number']; echo"</td>
     <td></td>
-
     <td>"; echo $row['Email_Address']; echo "</td>
-
     <td>"; echo $row['Mailing_Address'];echo "</td>
-
     <td></td>
-
     <td></td>
-    </tr>
-    <tr>
-    <td>";
-	}
-	function line3($id){
+    </tr>";}
+    }
+
+function line3($id){
 	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 
-	echo $row['Client_ID']; echo"</td>
-	
+    if ($result->num_rows > 0) {
+    echo "<tr><td>"; echo $row['Client_ID']; echo"</td>
 	<td></td>
     <td>"; echo $row['Phone_Number']; echo"</td>
     <td></td>
-
     <td>"; echo $row['Email_Address']; echo "</td>
-
     <td>"; echo $row['Mailing_Address'];echo "</td>
-
     <td></td>
-
     <td></td>
-    </tr>
-	
-    <tr>
-    <td>";
-	}
+    </tr>";}
+    }
 	
 	?>
-	
-	</td>
+
+	<td></td>
+
+	<td></td>
 
     <td></td>
 
