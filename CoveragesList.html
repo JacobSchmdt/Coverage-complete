@@ -2,78 +2,8 @@
 <html>
   <head>
     <title>Coverage Tracker</title>
-	<style>
-	table{
-    background-color: white;
-    width: 650px;
-    height: 300px;
-    background-color: lightblue;
-    color: white;
-    overflow-y: scroll;
-    border: solid black;
-}
-body {
-  font-family: "Lato", sans-serif;
-}
-
-.sidebar {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #6591C3;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #ffffff;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidebar a:hover {
-  color: #000;
-}
-
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color: #444;
-}
-
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
-	</style>
+<link rel="stylesheet" href="CoveragesList.css">
+<!--
     <script src="Client_Creation.js"></script>
 		<div id="mySidebar" class="sidebar">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -100,9 +30,10 @@ body {
 			document.getElementById("main").style.marginLeft = "0";
 }
 	</script>
-		<a class="button" href="">SRI Coverage Review</a>
-		<a class="button" href="">Coverage Tracker</a>
-		<a class="button" href="">Back to search</a>			
+	-->		
+		<a class="button" href='CoverageReport.php'>SRI Coverage Review</a>
+		<a class="button" href='ClientLookup.php'>Back to search</a>
+
   </head>
   <body>
 <div class="table"> 
@@ -111,40 +42,40 @@ body {
 
 <tr> 
 
-<th bgcolor="#CEECF5"><font color="red">Coverage Tracker</font></th>
+<th>Coverage Tracker</font></th>
 
-<th bgcolor="#CEECF5"><font color="red">on</font></th> 
+<th>on</font></th> 
 
-<th bgcolor="#CEECF5"><font color="red">N/A</font></th> 
+<th>N/A</font></th> 
 
-<th bgcolor="#CEECF5"><font color="red">Limit</font></th> 
+<th>Limit</font></th> 
 
-<th bgcolor="#CEECF5"><font color="red">Status</font></th> 
+<th>Status</font></th> 
 
-<th bgcolor="#CEECF5"><font color="red">Date</font></th>
-
-</tr> 
-
-<tr bgcolor="#D8D8D8"> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-
-
+<th>Date</font></th>
 
 </tr> 
 
-<tr bgcolor="#CEECF5"> 
+<tr> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+
+
+
+</tr> 
+
+<tr> 
 
 <td></td> 
 
@@ -161,7 +92,7 @@ body {
 
 </tr> 
 
-<tr bgcolor="#D8D8D8"> 
+<tr> 
 
 <td></td> 
 
@@ -179,7 +110,7 @@ body {
  
 </tr> 
 
-<tr bgcolor="#CEECF5"> 
+<tr> 
 
 <td></td>
 
@@ -197,7 +128,7 @@ body {
 
 </tr> 
 
-<tr bgcolor="#D8D8D8"> 
+<tr> 
 
 <td></td> 
 
@@ -214,7 +145,7 @@ body {
  
 </tr> 
 
-<tr bgcolor="#CEECF5">
+<tr>
 
 <td></td> 
 
@@ -231,7 +162,7 @@ body {
 
 </tr>
 
-<tr bgcolor="D8D8D8">
+<tr>
 
 <td></td> 
 
@@ -247,42 +178,7 @@ body {
 
 </tr>
 
-<tr bgcolor="#CEECF5">
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td>
-
-
-</tr>
-
-<tr bgcolor="D8D8D8">
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td>
-
-
-
-</tr>
-
-<tr bgcolor="#CEECF5">
+<tr>
 
 <td></td> 
 
@@ -299,7 +195,7 @@ body {
 
 </tr>
 
-<tr bgcolor="D8D8D8">
+<tr>
 
 <td></td> 
 
@@ -317,7 +213,7 @@ body {
 
 </tr>
 
-<tr bgcolor="#CEECF5">
+<tr>
 
 <td></td> 
 
@@ -334,42 +230,7 @@ body {
 
 </tr>
 
-<tr bgcolor="D8D8D8">
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td>
-
-
-
-</tr>
-
-<tr bgcolor="#CEECF5">
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td> 
-
-<td></td>
-
-
-</tr>
-
-<tr bgcolor="D8D8D8">
+<tr>
 
 <td></td> 
 
@@ -387,7 +248,7 @@ body {
 
 </tr>
 
-<tr bgcolor="#CEECF5">
+<tr>
 
 <td></td> 
 
@@ -404,7 +265,77 @@ body {
 
 </tr>
 
-<tr bgcolor="D8D8D8">
+<tr>
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td>
+
+
+
+</tr>
+
+<tr>
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td>
+
+
+</tr>
+
+<tr>
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td>
+
+
+
+</tr>
+
+<tr>
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td> 
+
+<td></td>
+
+
+</tr>
+
+<tr>
 
 <td></td> 
 

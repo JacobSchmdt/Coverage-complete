@@ -4,127 +4,11 @@
 <head>
 <?php include("db.php"); ?>
     <title>Client Lookup</title>
-    <style>
-
-        .button {
-            margin-top: 30px;
-            background-color: lightblue;
-            border: none;
-            color: white;
-            padding: 5px 34px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            width: 50px;
-        }
-
-        .button1 {
-            margin-top: 30px;
-            margin-left: 117px;
-            background-color: lightblue;
-            border: none;
-            color: white;
-            padding: 5px 34px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            width: 30px;
-        }
-
-        .button2 {
-            margin-top: 30px;
-            margin-left: 10px;
-            background-color: lightblue;
-            border: none;
-            color: white;
-            padding: 5px 34px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            width: 50px;
-        }
-
-        .sidebarbutton {
-            margin-left: 530px;
-            background-color: lightblue;
-            border: none;
-            color: white;
-            padding: 5px 34px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            width: 200px;
-        }
-
-        body {
-            background-color: White;
-        }
-
-        .flexing {
-            display: flex;
-            width: 35%;
-            flex: 1;
-            background-color: Black;
-        }
-
-        .table {
-            background-color: white;
-            width: 650px;
-            height: 300px;
-            background-color: lightblue;
-            color: white;
-            overflow-y: scroll;
-            border: solid black;
-        }
-
-        td {
-            width: 73px;
-            height: 50px;
-            border: 1px solid black;
-        }
-
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #6591C3;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-            .sidebar a {
-                padding: 8px 8px 8px 32px;
-                text-decoration: none;
-                font-size: 25px;
-                color: #ffffff;
-                display: block;
-                transition: 0.3s;
-            }
-
-                .sidebar a:hover {
-                    color: #000;
-                }
-
-            .sidebar .closebtn {
-                position: absolute;
-                top: 0;
-                right: 25px;
-                font-size: 36px;
-                margin-left: 50px;
-            }
-    </style>
+<link rel="stylesheet" href="ClientLookup.css">
 
 
 
-
+<!--
     <script src="Client_Creation.js"></script>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -154,7 +38,7 @@
         }
     </script>
 
-
+-->
 
     <!-- <link rel="stylesheet" href="C:\Users\Joel\OneDrive\Documents\HTML\Swartz\ClientLookup.css"> -->
 
@@ -178,26 +62,26 @@
 
     <tr>
 
-    <th bgcolor='#CEECF5'><font color='red'>Customer ID</font></th>
+    <th>Customer ID</font></th>
 
-    <th bgcolor='#CEECF5'><font color='red'>Company Name</font></th>
+    <th>Company Name</font></th>
 
-    <th bgcolor='#CEECF5'><font color='red'>Phone</font></th>
+    <th>Phone</font></th>
 
-    <th bgcolor='#CEECF5'><font color='red'>Phone 2</font></th>
+    <th>Phone 2</font></th>
 
-    <th bgcolor='#CEECF5'><font color='red'>Email</font></th>
+    <th>Email</font></th>
 
-    <th bgcolor='#CEECF5'><font color='red'>Mailing</font></th>
+    <th>Mailing</font></th>
 
-    <th bgcolor='#CEECF5'><font color='red'>Billing</font></th>
+    <th>Billing</font></th>
 
-    <th bgcolor='#CEECF5'><font color='red'>Notes</font></th>
+    <th>Notes</font></th>
 
 
     </tr>
 
-    <tr bgcolor='#D8D8D8'>
+    <tr>
 
     <td>";
    if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1)){
