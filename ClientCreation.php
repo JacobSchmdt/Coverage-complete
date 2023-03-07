@@ -1,6 +1,13 @@
 <?php
 //session_start();
-
+checkForUser();
+            function checkForUser(){
+        session_start();
+        if(!$_SESSION["user"]){
+            header("Location: login.htm");
+            die();
+        }
+    }
 include("db.php");
 
 if (isset($_POST['save_multiple_checkbox'])) {

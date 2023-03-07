@@ -3,6 +3,7 @@
 <html> 
 <head>
 <?php include("db.php"); ?>
+<?php checkForUser();?>
     <title>Client Lookup</title>
 <link rel="stylesheet" href="ClientLookup.css">
 
@@ -43,15 +44,23 @@
     <!-- <link rel="stylesheet" href="C:\Users\Joel\OneDrive\Documents\HTML\Swartz\ClientLookup.css"> -->
 
         <?php 
+            function checkForUser(){
+        session_start();
+        if(!$_SESSION["user"]){
+            header("Location: login.htm");
+            die();
+        }
+    }
     echo "<div class ='Search'>
         <form method='post' action=''>
-        <input type='text' id='clCode' name='clCode' placeholder='Client Code' required>
+        <input type='number' id='clCode' name='clCode' placeholder='Client Code' required>
         <input type='submit' name='searched' value='Search'>
         <a class= 'button1' href='ClientCreation.html'>New Client</a>
+        <a class= 'button1' href='logOut.php'>Log Out</a>
         </form>
 		
 		<form method='post' action''>
-		<input type='submit' name='reset' value='Reset'>
+		<input type='submit' name='reset' value='View All'>
 		</form>
 		
     </div>
@@ -81,156 +90,68 @@
     <th>Notes</font></th>
 
     </tr>
-
-    <tr>
 ";
-$sql = "SELECT Client_ID FROM client";
-$result = $conn->query($sql);
+$sqlSetup = "SELECT Client_ID FROM client";
+$resultSetup = $conn->query($sqlSetup);
 
 if (isset($_POST['searched'])){
 	$id = $_POST['clCode'];
-	line1($id);
-} else if ($result or isset($_POST['reset'])) {
-		while ($row = $result->fetch_assoc())  {
+	searchLine($id);
+} else if ($resultSetup or isset($_POST['reset'])) {
+		while ($row = $resultSetup->fetch_assoc())  {
 			$id = $row['Client_ID'];
-			$func = 'line' . $id;
-			$func($id);
+            lineLoop($id);
 		}
 }
-
-echo "<td>";
-	function line1($id){
-	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+function searchLine($id){
+	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 
-
-    echo "</td>
-	<td>"; echo $row['Client_ID']; echo"</td>
-	
-	<td></td>
+    if ($result->num_rows > 0) {
+    echo "<tr><td>
+<form method='get' action='CoverageReport.php'>
+<input type='submit' name='clientValue' value='{$row['Client_ID']}'></td>
+	<td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
-    <td></td>
-
+    <td>"; echo $row['Location_Phone']; echo"</td>
     <td>"; echo $row['Email_Address']; echo "</td>
-
     <td>"; echo $row['Mailing_Address'];echo "</td>
-
-    <td></td>
-
-    <td></td>
-
-
-    </tr>
-
-    <tr>
-    <td>";
-
+    <td>"; echo $row['Physical_Address']; echo"</td>
+    <td>"; echo $row['Notes']; echo"</td>
+    </tr>";
+    }   else{
+echo "<tr><td>ERROR</td>
+<td>NO</td>
+<td>CLIENT</td> 
+<td>CODE</td> 
+<td>FOUND</td>
+<td></td>
+<td></td>
+<td></td>
+    </tr>";}
 	}
-	function line2($id){
-	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+
+function lineLoop($id){
+	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 
-	echo $row['Client_ID']; echo"</td>
-	
-	<td></td>
+    if ($result->num_rows > 0) {
+    echo "<tr><td>
+<form method='get' action='CoverageReport.php'>
+<input type='submit' name='clientValue' value='$id'></td>
+	<td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
-    <td></td>
-
+    <td>"; echo $row['Location_Phone']; echo"</td>
     <td>"; echo $row['Email_Address']; echo "</td>
-
     <td>"; echo $row['Mailing_Address'];echo "</td>
-
-    <td></td>
-
-    <td></td>
-    </tr>
-    <tr>
-    <td>";
-	}
-	function line3($id){
-	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    $row = mysqli_fetch_assoc($result);
-
-	echo $row['Client_ID']; echo"</td>
-	
-	<td></td>
-    <td>"; echo $row['Phone_Number']; echo"</td>
-    <td></td>
-
-    <td>"; echo $row['Email_Address']; echo "</td>
-
-    <td>"; echo $row['Mailing_Address'];echo "</td>
-
-    <td></td>
-
-    <td></td>
-    </tr>
-	
-    <tr>
-    <td>";
-	}
+    <td>"; echo $row['Physical_Address']; echo"</td>
+    <td>"; echo $row['Notes']; echo"</td>
+    </tr>";}
+    }
 	
 	?>
-	
-	</td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    </tr>
-
-    <tr>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    </tr>
-
-    <tr>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-
-
     </table>
 
 
