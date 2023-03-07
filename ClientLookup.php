@@ -45,7 +45,7 @@
         <?php 
     echo "<div class ='Search'>
         <form method='post' action=''>
-        <input type='text' id='clCode' name='clCode' placeholder='Client Code'>
+        <input type='text' id='clCode' name='clCode' placeholder='Client Code' required>
         
         <input type='submit' name='submit' value='Search'>
 
@@ -84,13 +84,12 @@
     <tr>
 
     <td>";
-   if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1)){
+	$id = 1;
     $id = $_REQUEST['clCode'];
 	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 	echo $row['Client_ID'];
-   }
 
     echo "</td>
 
@@ -98,36 +97,19 @@
 
      <td>";
 
-   if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1)){
-    $id = $_REQUEST['clCode'];
-	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    $row = mysqli_fetch_assoc($result);
 	echo $row['Phone_Number'];
-   } 	
 	
 	echo "</td>
 
     <td></td>
 
     <td>";
-	   if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1)){
-    $id = $_REQUEST['clCode'];
-	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    $row = mysqli_fetch_assoc($result);
 	echo $row['Email_Address'];
-   }
+   
 echo "	</td>
 
     <td>";
-	   if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1)){
-    $id = $_REQUEST['clCode'];
-	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    $row = mysqli_fetch_assoc($result);
 	echo $row['Mailing_Address'];
-   }
 echo "</td>
 
     <td></td>
@@ -139,7 +121,7 @@ echo "</td>
 
     ?>
 
-    <tr bgcolor="#CEECF5">
+    <tr>
 
     <td></td>
 
@@ -159,7 +141,7 @@ echo "</td>
 
     </tr>
 
-    <tr bgcolor="#D8D8D8">
+    <tr>
 
     <td></td>
 
@@ -179,7 +161,7 @@ echo "</td>
 
     </tr>
 
-    <tr bgcolor="#CEECF5">
+    <tr>
 
     <td></td>
 
@@ -199,7 +181,7 @@ echo "</td>
 
     </tr>
 
-    <tr bgcolor="#D8D8D8">
+    <tr>
 
     <td></td>
 
@@ -219,7 +201,7 @@ echo "</td>
 
     </tr>
 
-    <tr bgcolor="#CEECF5">
+    <tr>
 
     <td></td>
 
