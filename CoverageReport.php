@@ -4,7 +4,7 @@
 
 
 <?php include("db.php"); ?>
-
+<?php checkForUser(); ?>
 
     <title>Coverage Report</title>
     <!--<link rel="stylesheet" type="text/css" href="/CoverageReport.css">-->
@@ -48,9 +48,17 @@
         </table>
     </div>
     <?php
+    function checkForUser(){
+        session_start();
+        if(!$_SESSION["user"]){
+            header("Location: login.htm");
+            die();
+        }
+    }    
+   
     function brName(){
-    //$username = $_SESSION["user"];
-    $sql = "SELECT Name FROM user WHERE User_Name='RenzCatt'";
+    $username = $_SESSION["user"];
+    $sql = "SELECT Name FROM user WHERE User_Name='$username';";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 

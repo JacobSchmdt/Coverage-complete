@@ -1,6 +1,4 @@
 <?php
-//session_start(); // Start session
-
 // Check if form is submitted
 if (isset($_POST['submit'])) {
 
@@ -29,7 +27,8 @@ if (isset($_POST['submit'])) {
         // Login successful
         $row = mysqli_fetch_assoc($result);
         //$_SESSION['user_id'] = $row['id'];
-        //$_SESSION['username'] = $row['username'];
+        session_start(); // Start session
+        $_SESSION['user'] = $username;
         header("Location: ClientCreation.html");
         exit();
     } else {
@@ -40,6 +39,8 @@ if (isset($_POST['submit'])) {
         // Login failed
         $_SESSION['error'] = "Invalid username or password.";
         header("Location: Login.htm");
+        
+
     exit();
 }
 ?>

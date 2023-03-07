@@ -1,5 +1,4 @@
 <?php
-	session_start();
     $servername = "localhost";
     $username = "root";
     $password = "Password1";
@@ -12,6 +11,6 @@
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
-        echo "this bitch dont work";
+        echo "this dont work";
     }
 ?>

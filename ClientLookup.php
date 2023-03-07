@@ -3,6 +3,7 @@
 <html> 
 <head>
 <?php include("db.php"); ?>
+<?php checkForUser();?>
     <title>Client Lookup</title>
 <link rel="stylesheet" href="ClientLookup.css">
 
@@ -43,11 +44,19 @@
     <!-- <link rel="stylesheet" href="C:\Users\Joel\OneDrive\Documents\HTML\Swartz\ClientLookup.css"> -->
 
         <?php 
+            function checkForUser(){
+        session_start();
+        if(!$_SESSION["user"]){
+            header("Location: login.htm");
+            die();
+        }
+    }
     echo "<div class ='Search'>
         <form method='post' action=''>
         <input type='text' id='clCode' name='clCode' placeholder='Client Code' required>
         <input type='submit' name='searched' value='Search'>
         <a class= 'button1' href='ClientCreation.html'>New Client</a>
+        <a class= 'button1' href='logOut.php'>Log Out</a>
         </form>
 		
 		<form method='post' action''>
