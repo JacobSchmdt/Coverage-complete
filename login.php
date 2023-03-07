@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start session
+//session_start(); // Start session
 
 // Check if form is submitted
 if (isset($_POST['submit'])) {
@@ -22,24 +22,24 @@ if (isset($_POST['submit'])) {
     //password_hash = password_hash($password, PASSWORD_DEFAULT);
 
     // Check if username and password match
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM user WHERE User_Name='$username' AND Pass_Word='$password'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) == 1) {
         // Login successful
         $row = mysqli_fetch_assoc($result);
-        $_SESSION['user_id'] = $row['id'];
-        $_SESSION['username'] = $row['username'];
+        //$_SESSION['user_id'] = $row['id'];
+        //$_SESSION['username'] = $row['username'];
         header("Location: ClientCreation.html");
         exit();
     } else {
+		header("Location: ClientCreation.html");
+        exit();
+    }    
+} else {
         // Login failed
         $_SESSION['error'] = "Invalid username or password.";
         header("Location: Login.htm");
-        exit();
-    }
-} else {
-    header("Location: Login.htm");
     exit();
 }
 ?>
