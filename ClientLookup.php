@@ -105,19 +105,19 @@ if (isset($_POST['searched'])){
 		}
 }
 function line1($id){
-	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 
     if ($result->num_rows > 0) {
     echo "<tr><td>"; echo $row['Client_ID']; echo"</td>
-	<td></td>
+	<td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
-    <td></td>
+    <td>"; echo $row['Location_Phone']; echo"</td>
     <td>"; echo $row['Email_Address']; echo "</td>
     <td>"; echo $row['Mailing_Address'];echo "</td>
-    <td></td>
-    <td></td>
+    <td>"; echo $row['Physical_Address']; echo"</td>
+    <td>"; echo $row['Notes']; echo"</td>
     </tr>";
     }   else{
 echo "<tr><td>ERROR</td>
@@ -132,36 +132,36 @@ echo "<tr><td>ERROR</td>
 	}
 
 function line2($id){
-	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 
     if ($result->num_rows > 0) {
     echo "<tr><td>"; echo $row['Client_ID']; echo"</td>
-	<td></td>
+	<td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
-    <td></td>
+    <td>"; echo $row['Location_Phone']; echo"</td>
     <td>"; echo $row['Email_Address']; echo "</td>
     <td>"; echo $row['Mailing_Address'];echo "</td>
-    <td></td>
-    <td></td>
+    <td>"; echo $row['Physical_Address']; echo"</td>
+    <td>"; echo $row['Notes']; echo"</td>
     </tr>";}
     }
 
 function line3($id){
-	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
 
     if ($result->num_rows > 0) {
     echo "<tr><td>"; echo $row['Client_ID']; echo"</td>
-	<td></td>
+	<td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
-    <td></td>
+    <td>"; echo $row['Location_Phone']; echo"</td>
     <td>"; echo $row['Email_Address']; echo "</td>
     <td>"; echo $row['Mailing_Address'];echo "</td>
-    <td></td>
-    <td></td>
+    <td>"; echo $row['Physical_Address']; echo"</td>
+    <td>"; echo $row['Notes']; echo"</td>
     </tr>";}
     }
 	
