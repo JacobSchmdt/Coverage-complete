@@ -78,94 +78,101 @@
 
     <th>Notes</font></th>
 
-
     </tr>
 
     <tr>
+";
+$sql = "SELECT Client_ID FROM client";
+$result = $conn->query($sql);
+if ($result) {
+		while ($row = $result->fetch_assoc())  {
+			$id = $row['Client_ID'];
+			$func = 'line' . $id;
+			$func($id);
+			
+			
+			
+			
+		}
+}
 
-    <td>";
-	$id = 1;
-    $id = $_REQUEST['clCode'];
+echo "<td>";
+	function line1($id){
 	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
-    $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
-	echo $row['Client_ID'];
+
 
     echo "</td>
-
-    <td></td>
-
-     <td>";
-
-	echo $row['Phone_Number'];
+	<td>"; echo $row['Client_ID']; echo"</td>
 	
-	echo "</td>
-
+	<td></td>
+    <td>"; echo $row['Phone_Number']; echo"</td>
     <td></td>
 
-    <td>";
-	echo $row['Email_Address'];
-   
-echo "	</td>
+    <td>"; echo $row['Email_Address']; echo "</td>
 
-    <td>";
-	echo $row['Mailing_Address'];
-echo "</td>
+    <td>"; echo $row['Mailing_Address'];echo "</td>
 
     <td></td>
 
     <td></td>
 
-
-    </tr>";
-
-    ?>
-
-    <tr>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
 
     </tr>
 
     <tr>
+    <td>";
+
+	}
+	function line2($id){
+	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $row = mysqli_fetch_assoc($result);
+
+	echo $row['Client_ID']; echo"</td>
+	
+	<td></td>
+    <td>"; echo $row['Phone_Number']; echo"</td>
+    <td></td>
+
+    <td>"; echo $row['Email_Address']; echo "</td>
+
+    <td>"; echo $row['Mailing_Address'];echo "</td>
 
     <td></td>
 
     <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
-    <td></td>
-
     </tr>
-
     <tr>
+    <td>";
+	}
+	function line3($id){
+	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $row = mysqli_fetch_assoc($result);
+
+	echo $row['Client_ID']; echo"</td>
+	
+	<td></td>
+    <td>"; echo $row['Phone_Number']; echo"</td>
+    <td></td>
+
+    <td>"; echo $row['Email_Address']; echo "</td>
+
+    <td>"; echo $row['Mailing_Address'];echo "</td>
 
     <td></td>
 
     <td></td>
+    </tr>
+    <tr>
+    <td>";
+	}
+	
+	?>
+	
+	</td>
 
     <td></td>
 
