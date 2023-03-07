@@ -41,9 +41,9 @@
 
 
 
- $id2 = $_GET['$id'];
+ $id = $_GET['clientValue'];
  $username = $_SESSION["user"];
- $sql = "SELECT Client_Name FROM client WHERE Client_ID='$id2'";
+ $sql = "SELECT Client_Name FROM client WHERE Client_ID='$id'";
  $result = mysqli_query($conn, $sql);
  $row = mysqli_fetch_assoc($result);
 
@@ -60,7 +60,7 @@ echo"
             $row = mysqli_fetch_assoc($result);
             echo $row['Name']; echo "</td></tr>
             <tr><th>Client Code:</th><td>";
-            $sql = "SELECT * FROM client WHERE Client_ID='$id2'";
+            $sql = "SELECT * FROM client WHERE Client_ID='$id'";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
             echo $row['Client_ID']; echo "</td></tr>
@@ -68,7 +68,7 @@ echo"
             <tr><th>Email:</th><td>";echo $row['Email_Address']; echo"</td></tr>
             <tr><th>Phone:</th><td>";echo $row['Phone_Number']; echo"</td></tr>
             <tr><th>Policy ID:</th><td>";
-            $sql = "SELECT * FROM policy, client_location WHERE policy.Location_ID = client_location.Location_ID AND client_location.Client_ID = '$id2'"; 
+            $sql = "SELECT * FROM policy, client_location WHERE policy.Location_ID = client_location.Location_ID AND client_location.Client_ID = '$id'"; 
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
             echo $row['Policy_ID']; echo"</td></tr>
