@@ -1,35 +1,39 @@
 <?php
 
-session_start();
+// Start the session
 
-include("db.php");
+include("db.php")
+
+// Check if the user has submitted the form to create an account
+
+
 // Check if the form has been submitted
 if (isset($_POST['submit'])) {
+  // Get the form data
+  $username = mysqli_real_escape_string($db, $_POST['Uname']);
+  $password = mysqli_real_escape_string($db, $_POST['Password']);
 
-    $username = mysqli_real_escape_string($db, $_POST['username']);
-    $password = mysqli_real_escape_string($db, $_POST['password']);
-
-    if (empty($username) || empty($password)) {
-        echo "Error: The username and password fields cannot be empty.";
-      } else {
+  // Check if the username and password are not empty
+  if (empty($username) || empty($password)) {
+    echo "Error: The broker and password fields cannot be empty.";
+  } else {
+    // Hash the password
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-// Query the database to check if the user exists and the password is correct
-$query = "SELECT count(*) as total FROM users WHERE User_Name = '".$username."' AND Pass_Word = '".$password_hash."'";
-$result = $db->query($query);
-
-// If the query returns a result, the user exists and the password is correct
-if ($result->num_rows > 0) {
-	$_SESSION['userID'] = $username;
-// Approve the login
-header("Location: ClientLookup.html");
-die;
-} else {
-// The login credentials are incorrect
-echo "Incorrect username or password. Please try again.";
-}
-}
+    // Check if the username already exists in the database
+    $query = "SELECT * FROM user WHERE User_Name = '$username'";
+    $result = mysqli_query($db, $query);
+    if (mysqli_num_rows($result) > 0) {
+      // The username already exists, so display an error message
+      echo "Error: Broker exists already.";
+    } else {
+      // The username is available, so create the account
+      $query = "INSERT INTO user (User_Name, Pass_Word) VALUES ('$username', '$password_hash')";
+      mysqli_query($db, $query);
+	  header("Location: Login.htm");
+      echo "Your account has been created successfully.";
+	  
+    }
+  }
 }
 ?>
-
-
