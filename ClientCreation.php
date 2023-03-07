@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 
 include("db.php");
 
@@ -18,12 +18,7 @@ if (empty($nameInsured) || empty($companyName) || empty($location) || empty($bus
     echo "Error: Fields cannot be empty";
   } else {
 
-$query = "
-INSERT INTO client (Name, Review_Consent) VALUES ('$nameInsured', '$allConsent');
-INSERT INTO location_category (Client_Location, Business_Type) VALUES ('$location', '$business');
-INSERT INTO client_location (Alias) VALUES ('$companyName');
-INSERT INTO option (Description) VALUES ('$description');
-";
+$query = "INSERT INTO client (Name) VALUES ('$nameInsured')";
 
 if(mysqli_query($conn, $query)){
     echo "Client Created Successfully";
