@@ -8,8 +8,8 @@ if (isset($_POST['submit'])) {
     require_once 'db.php';
 
     // Sanitize user input
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $username = mysqli_real_escape_string($conn, $_POST['Uname']);
+    $password = mysqli_real_escape_string($conn, $_POST['Password']);
 
     // Check if fields are empty
     if (empty($username) || empty($password)) {
@@ -19,10 +19,10 @@ if (isset($_POST['submit'])) {
     }
 
     // Hash the password
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+    //password_hash = password_hash($password, PASSWORD_DEFAULT);
 
     // Check if username and password match
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$hashed_password'";
+    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) == 1) {
