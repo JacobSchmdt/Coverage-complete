@@ -2,6 +2,7 @@
 
 <html> 
 <head>
+<?php include("db.php"); ?>
     <title>Client Lookup</title>
     <style>
 
@@ -158,33 +159,6 @@
     <!-- <link rel="stylesheet" href="C:\Users\Joel\OneDrive\Documents\HTML\Swartz\ClientLookup.css"> -->
 
         <?php 
-    $servername = "localhost";
-	$username = "root";
-	$password = "Password1";
-	$dbname = "coveragecompletedb";
-	// Create connection
-    global $conn;
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-	// Check connection
-	if (!$conn) {
-	  die("Connection failed: " . mysqli_connect_error());
-	}   
-
-    function clID(){
-    $id = $_REQUEST['clCode'];
-//    $sql = "SELECT Client_ID FROM client WHERE Client_ID=$id";
-//    echo $id;
-    //$result = mysqli_query($conn, $sql);
-   // $row = mysqli_fetch_assoc($result);
-
-   // echo $row['Client_ID'];
-    }
-
-
-    
-    
-
     echo "<div class ='Search'>
         <form method='post' action=''>
         <input type='text' id='clCode' name='clCode' placeholder='Client Code'>
@@ -226,24 +200,51 @@
     <tr bgcolor='#D8D8D8'>
 
     <td>";
-   if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1){
-       $id = $_REQUEST['clCode'];
-       echo $id;
-       echo "balls";
-   }    
-
+   if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1)){
+    $id = $_REQUEST['clCode'];
+	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $row = mysqli_fetch_assoc($result);
+	echo $row['Client_ID'];
+   }
 
     echo "</td>
 
     <td></td>
 
-    <td></td>
+     <td>";
+
+   if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1)){
+    $id = $_REQUEST['clCode'];
+	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $row = mysqli_fetch_assoc($result);
+	echo $row['Phone_Number'];
+   } 	
+	
+	echo "</td>
 
     <td></td>
 
-    <td></td>
+    <td>";
+	   if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1)){
+    $id = $_REQUEST['clCode'];
+	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $row = mysqli_fetch_assoc($result);
+	echo $row['Email_Address'];
+   }
+echo "	</td>
 
-    <td></td>
+    <td>";
+	   if(isset($_REQUEST['submit']) and ($_REQUEST['submit'] == 'Search') and ($_REQUEST['clCode'] >= 1)){
+    $id = $_REQUEST['clCode'];
+	$sql = "SELECT Client_ID, Email_Address, Phone_Number, Mailing_Address FROM client WHERE Client_ID=$id";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $row = mysqli_fetch_assoc($result);
+	echo $row['Mailing_Address'];
+   }
+echo "</td>
 
     <td></td>
 

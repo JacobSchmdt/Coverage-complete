@@ -3,24 +3,7 @@
 <head>
 
 
-<?php
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "Password1";
-    $dbname = "coveragecompletedb";
-    // Create connection
-    global $conn; 
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    global $brokerUser;
-    $brokerUser = 'RenzCatt';
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-        echo "this bitch dont work";
-    }
-
-    ?>
+<?php include("db.php"); ?>
 
 
     <title>Coverage Report</title>
@@ -49,8 +32,6 @@
 </head>
 <body style="background-color: #5168AC;">
 
-    <?php checkForUser() ?>
-
     <div class="sriHeading"><h1>Schwartz Reliance Insurance</h1></div>
     <div style="background-color: lightgray;">
         <table class="upperTable">
@@ -67,15 +48,6 @@
         </table>
     </div>
     <?php
-    function checkForUser() {
-    session_start();
-    // if(!$_SESSION["user"]){
-   //     header("Location: localhost");
-   //     die();
-   // }else {
-   //     $username = $_SESSION["user"];
-   // }
-    }
     function brName(){
     //$username = $_SESSION["user"];
     $sql = "SELECT Name FROM user WHERE User_Name='RenzCatt'";
