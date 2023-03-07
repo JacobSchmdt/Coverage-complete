@@ -110,7 +110,7 @@ function searchLine($id){
 
     if ($result->num_rows > 0) {
     echo "<tr><td>
-<form method='get' action='CoverageReport.php'>
+<form method='get' action='CoverageList.php'>
 <input type='submit' name='clientValue' value='{$row['Client_ID']}'></td>
 	<td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
@@ -139,7 +139,7 @@ function lineLoop($id){
 
     if ($result->num_rows > 0) {
     echo "<tr><td>
-<form method='get' action='CoverageReport.php'>
+<form method='get' action='CoverageList.php'>
 <input type='submit' name='clientValue' value='$id'></td>
 	<td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>

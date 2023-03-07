@@ -51,7 +51,10 @@ echo"
 <body style='background-color: #5168AC;'>
     <div class='sriHeading'><h1>Schwartz Reliance Insurance</h1></div>
     <div style='background-color: lightgray;'>
-    <a href='ClientLookup.php'>Back</a>
+	<form method='get' action='CoverageList.php'>
+    <input type='hidden' name='clientValue' value='$id'>
+	<input type='submit' name='' value='Back'>
+	</form>
     <a href='logOut.php'>Log Out</a>
         <table class='upperTable'>
             <tr><th>Client:</th><td>"; echo $row['Client_Name']; echo"</td><th>Broker:</th><td>";
