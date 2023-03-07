@@ -46,12 +46,14 @@
     echo "<div class ='Search'>
         <form method='post' action=''>
         <input type='text' id='clCode' name='clCode' placeholder='Client Code' required>
-        
-        <input type='submit' name='submit' value='Search'>
-
+        <input type='submit' name='searched' value='Search'>
         <a class= 'button1' href='ClientCreation.html'>New Client</a>
-
         </form>
+		
+		<form method='post' action''>
+		<input type='submit' name='reset' value='Reset'>
+		</form>
+		
     </div>
 
     </head>
@@ -84,15 +86,15 @@
 ";
 $sql = "SELECT Client_ID FROM client";
 $result = $conn->query($sql);
-if ($result) {
+
+if (isset($_POST['searched'])){
+	$id = $_POST['clCode'];
+	line1($id);
+} else if ($result or isset($_POST['reset'])) {
 		while ($row = $result->fetch_assoc())  {
 			$id = $row['Client_ID'];
 			$func = 'line' . $id;
 			$func($id);
-			
-			
-			
-			
 		}
 }
 
@@ -166,6 +168,7 @@ echo "<td>";
 
     <td></td>
     </tr>
+	
     <tr>
     <td>";
 	}
