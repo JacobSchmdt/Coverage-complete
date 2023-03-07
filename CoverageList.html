@@ -9,10 +9,15 @@
             }
             button.leftOptionButton {
                 background-color: lightgray;
+                border: none;
+                padding: 12px;
             }
             button.backButton {
                 background-color: #6591C3;
+                color: white;
                 float: right;
+                border: none;
+                padding: 12px;
             }
             div.optionList {
                 background-color: lightgray;
@@ -21,25 +26,36 @@
                 float: left;
             }
             div.clientLocationList {
-                width: 40%;
                 float: left;
             }
             button.clientLocationButton {
                 background-color: #6591C3;
+                color: white;
+                border: none;
+                padding: 12px 60px;
+            }
+            button {
+                transition-delay: 0.1s;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #FFFFFF;
+                color: black;
             }
             table, th, td {
                 border: 1px solid black;
                 border-collapse: collapse;
                 text-align: center;
+                padding: 14px;
                 width: 100%;
             }
         </style>
     </head>
     <body style="background-color: #5168AC;">
         <div class="optionHeader">
-            <button class="leftOptionButton">SRI Coverage Review</button>
-            <button class="leftOptionButton">Coverage Tracker</button>
-            <button class="backButton">Back To Search</button>
+            <button type="button" class="leftOptionButton">SRI Coverage Review</button>
+            <button type="button" class="leftOptionButton">Coverage Tracker</button>
+            <button type="button" class="backButton">Back To Search</button>
         </div><br>
         <div class="optionList">
             <table>
@@ -52,7 +68,7 @@
             </table>
         </div>
         <div class="clientLocationList">
-            <button class="clientLocationButton">Location ##</button><br>
+            <button type="button" class="clientLocationButton">Location ##</button><br>
         </div>
     </body>
 </html>
