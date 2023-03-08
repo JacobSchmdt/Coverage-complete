@@ -5,6 +5,12 @@
 <?php checkForUser(); ?>
         <title>Coverages List</title>
         <style>
+		
+            .sriHeading {
+            text-align: right;
+            width: 100%;
+            background-color: #5168AC;
+            }		
             div.optionHeader {
                 width: 100%;
             }
@@ -61,29 +67,42 @@
         }
     } 	
 	$id = $_GET['clientValue'];
+	
+	
+	
 	echo"
     <body style='background-color: #5168AC;'>
+	    <div class='sriHeading'><h1>Schwartz Reliance Insurance</h1></div>
         <div class='optionHeader'>
 		<form method='get' action='CoverageReport.php'>
             <input type='hidden' name='clientValue' value='$id'>
 			<input type='submit' name='' value='SRI Coverage Review'>
-            <a class='leftOptionButton'>Coverage Tracker</a>
-            <a class='backButton' href='ClientLookup.php'>Back To Search</a>
+            <a href='ClientLookup.php'><button type='button' class='clientLocationButton'>Back to Client Search</button></a>
+            <a href='logOut.php'><button type='button' class='clientLocationButton'>Log Out</button></a>			
 			</form>
         </div><br>
         <div class='optionList'>
             <table>
                 <tr>
-                    <th>Coverage Type</th><th>ON</th><th>Applicable</th><th>Limit</th><th>Status</th><th>Date</th>
+                    <th>Coverage Type</th><th>ON</th><th>Limit</th><th>Status</th><th>Date</th>
                 </tr>
                 <tr>
-                    <td>Contents</td><td><input type='checkbox' checked></td><td><input type='checkbox'></td><td>$2500000</td><td>Accepted</td><td>12/11/2022</td>
+                    <td>Fire Damage</td><td><input type='checkbox' checked></td><td>$2500000</td><td>Accepted</td><td>12/11/2022</td>
                 </tr>
+                <tr>
+                    <td>Water Damage</td><td><input type='checkbox' checked></td><td>$2500000</td><td>Accepted</td><td>12/11/2022</td>
+                </tr>
+                <tr>
+                    <td>Theft</td><td><input type='checkbox' checked></td><td>$2500000</td><td>Accepted</td><td>12/11/2022</td>
+                </tr>
+                <tr>
+                    <td>Equipment Breakdown</td><td><input type='checkbox' checked></td><td>$2500000</td><td>Accepted</td><td>12/11/2022</td>
+                </tr>				
             </table>
         </div>
-        <div class='clientLocationList'>
+        <!--<div class='clientLocationList'>
             <button type='button' class='clientLocationButton'>Location ##</button><br>
-        </div>
+        </div>-->
     </body>
 	";?>
 </html>

@@ -55,6 +55,20 @@ body {
 .openbtn:hover {
   background-color: #444;
 }
+            button.clientLocationButton {
+                background-color: #6591C3;
+                color: white;
+                border: none;
+                padding: 12px 60px;
+            }
+            button {
+                transition-delay: 0.1s;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #FFFFFF;
+                color: black;
+            }
 
 #main {
   transition: margin-left .5s;
@@ -67,6 +81,7 @@ body {
   .sidebar a {font-size: 18px;}
 }
 </style>
+<!--
     <script src="Client_Creation.js"></script>
 		<div id="mySidebar" class="sidebar">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -92,7 +107,7 @@ body {
 			document.getElementById("mySidebar").style.width = "0";
 			document.getElementById("main").style.marginLeft = "0";
 }
-	</script>
+	</script> -->
   </head>
 <body style="background-color:#D9D9D9">	
 	<form action="/ClientCreation.php" target="_self" method="POST">
@@ -132,7 +147,8 @@ body {
 		<label for="SRI">SRI Coverage Review</label><br>
 		
 		<input type="submit" name="save_multiple_checkbox" class="btnSave" value="Submit">
-		<input type="submit" value="Cancel">
+		<!--<input type="submit" value="Cancel">-->
+		<a href='ClientLookup.php'><button type='button' class='clientLocationButton'>Back to Client Search</button></a>
 		</div>
 	</form>
 </body>

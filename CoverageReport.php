@@ -9,6 +9,21 @@
     <title>Coverage Report</title>
     <!--<link rel="stylesheet" type="text/css" href="/CoverageReport.css">-->
     <style>
+            button {
+                transition-delay: 0.1s;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #FFFFFF;
+                color: black;
+            }
+            button.backButton {
+                background-color: #6591C3;
+                color: white;
+                float: right;
+                border: none;
+                padding: 12px;
+            }			
         .sriHeading {
             text-align: right;
             width: 100%;
@@ -28,6 +43,12 @@
             text-align: center;
             width: 100%;
         }
+        button.clientLocationButton {
+            background-color: #6591C3;
+            color: white;
+            border: none;
+            padding: 12px 60px;
+        }		
     </style>
 </head>
 <?php
@@ -55,7 +76,7 @@ echo"
     <input type='hidden' name='clientValue' value='$id'>
 	<input type='submit' name='' value='Back'>
 	</form>
-    <a href='logOut.php'>Log Out</a>
+    <a href='logOut.php'><button type='button' class='clientLocationButton'>Log Out</button></a>
         <table class='upperTable'>
             <tr><th>Client:</th><td>"; echo $row['Client_Name']; echo"</td><th>Broker:</th><td>";
             $sql = "SELECT Name FROM user WHERE User_Name='$username';";
