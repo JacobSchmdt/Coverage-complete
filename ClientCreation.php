@@ -10,7 +10,7 @@ checkForUser();
     }
 include("db.php");
 
-if (isset($_POST['save_multiple_checkbox'])) {
+//if (isset($_POST['save_multiple_checkbox'])) {
 
 $nameInsured = mysqli_real_escape_string($conn, $_POST['Iname']);
 $mailingAddress = mysqli_real_escape_string($conn, $_POST['Mailing_Address']);
@@ -20,13 +20,16 @@ $companyName = mysqli_real_escape_string($conn, $_POST['Company']);
 $description = mysqli_real_escape_string($conn, $_POST['Description']);
 $consent = $_POST['Consent'];
 
-$allConsent = implode(", ",$consent);
+//$allConsent = implode(", ",$consent);
 
-if (empty($mailingAddress)) {
-    echo "Error: Fields cannot be empty";
-  } else {
 
-$query = "INSERT INTO client (Mailing_Address, Company_Name, Client_Name, Email_Address, Phone_Number, Coverage_Review, Notes) VALUES ('$mailingAddress','$companyName','$nameInsured','$emailAddress','$phoneNumber','$allConsent','$nameInsured')";
+
+$query = "INSERT INTO client (Mailing_Address, Company_Name, Client_Name, Email_Address, Phone_Number, Coverage_Review, Notes)
+ VALUES ('$mailingAddress','$companyName','$nameInsured','$emailAddress','$phoneNumber','$allConsent','$nameInsured')";
+ 
+//$query = "INSERT INTO client_location "
+
+//$query= "INSERT INTO policy "
 
 if(mysqli_query($conn, $query)){
     echo "Client Created Successfully";
@@ -35,6 +38,5 @@ if(mysqli_query($conn, $query)){
 else {
     echo "Error inserting Client";
 }
-}
-}
+
 ?>
