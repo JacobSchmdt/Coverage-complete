@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -54,6 +55,20 @@ body {
 .openbtn:hover {
   background-color: #444;
 }
+            button.clientLocationButton {
+                background-color: #6591C3;
+                color: white;
+                border: none;
+                padding: 12px 60px;
+            }
+            button {
+                transition-delay: 0.1s;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #FFFFFF;
+                color: black;
+            }
 
 #main {
   transition: margin-left .5s;
@@ -66,6 +81,7 @@ body {
   .sidebar a {font-size: 18px;}
 }
 </style>
+<!--
     <script src="Client_Creation.js"></script>
 		<div id="mySidebar" class="sidebar">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -91,46 +107,48 @@ body {
 			document.getElementById("mySidebar").style.width = "0";
 			document.getElementById("main").style.marginLeft = "0";
 }
-	</script>
+	</script> -->
   </head>
 <body style="background-color:#D9D9D9">	
 	<form action="/ClientCreation.php" target="_self" method="POST">
 		<label for="Iname">Name of Insured</label><br>
-		<input type="text" id="Iname" name="Iname" value="insured"><br><br>
+		<input type="text" id="Iname" name="Iname" value="" required><br><br>
 		
 		<label for="Company">Company</label><br>
-		<input type="text" id="Company" name="Company" value="Company"><br><br>
+		<input type="text" id="Company" name="Company" value="" required><br><br>
 		
-		<label for="Client_ID">Client code</label><br>
-		<input type="text" id="Client_ID" name="Cname" value="Client Code"><br><br>
 		
-		<label for="location">Location:</label>
-		<input type="text" name="location" id="location">
-		<button type="button" id="add-location">Add</button>
-		<ul id="location-list"></ul>
+		<label for="Mailing_Address">Mailing Address:</label>
+		<input type="text" id="Mailing_Address" name="Mailing_Address" required>
+		<br>
+		<br>
+		<label for="Email_Adress">Email Address</label>
+		<input type="text" id="Email_Adress" name="Email_Address" required>
+		<br>
+		<br>
+		<label for="Phone_Number">Phone Number</label>
+		<input type="number" id="Phone_Number" name="Phone_Number" required>
+		<br>
+		<br>
 		
-		<label for="business_type">Business types:</label>
-		<input type="text" name="businessType" id="business">
-		<button type="button" id="add-Bclass">Add</button>
-		<ul id="business-list"></ul>
-		
+		<label for="Broker_ID">Broker ID</label>
+		<input type="number" id="Broker_ID" name="Broker_ID" required>
+		<br>
+		<br>
 		<label for="Description">Description:</label><br>
 		<textarea id="Description" name="Description" rows="4" cols="50"></textarea><br>
 		
 		
-		<div class="form-group">
-		<input type="checkbox" id="Creditconsent" name="Consent[]" value="Credit Consent">
-		<label for="Creditconsent">Credit Consent</label><br>
 		
-		<input type="checkbox" id="PrivacyConsent" name="Consent[]" value="Privacy Consent">
-		<label for="PrivacyConsent"> Privacy Consent</label><br>
+		
+		<div class="form-group">
 		
 		<input type="checkbox" id="SRI" name="Consent[]" value="SRI Coverage Review">
 		<label for="SRI">SRI Coverage Review</label><br>
 		
 		<input type="submit" name="save_multiple_checkbox" class="btnSave" value="Submit">
-		<input type="submit" value="Cancel">
-		<a class='button1' href='logOut.php'>Log Out</a>
+		<!--<input type="submit" value="Cancel">-->
+		<a href='ClientLookup.php'><button type='button' class='clientLocationButton'>Back to Client Search</button></a>
 		</div>
 	</form>
 </body>

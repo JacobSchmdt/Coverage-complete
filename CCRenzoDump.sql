@@ -60,9 +60,36 @@ CREATE TABLE `client` (
 /*Data for the table `client` */
 
 insert  into `client`(`Client_ID`,`Mailing_Address`,`Client_Name`,`Email_Address`,`Phone_Number`,`Credit_Consent`,`Privacy_Consent`,`Coverage_Review`,`Notes`) values 
-(1,'123 ST','Kevin Chubb','fakeemail.com',12345,1,1,1,'Chubb'),
+(1,'123 ST','Kevin Chubb','fakeemail.com',403892454,1,1,1,'Chubb'),
 (2,'MayorGrath','Pozy','firestone.com',42324748,1,1,1,NULL),
 (3,'College Drive','Barry','barry.cit',59542394,1,1,1,'Barrel');
+
+/*Table structure for table `client_coverage` */
+
+DROP TABLE IF EXISTS `client_coverage`;
+
+CREATE TABLE `client_coverage` (
+  `Client_ID` int NOT NULL AUTO_INCREMENT,
+  `Contents` tinyint(1) DEFAULT NULL,
+  `Sewer_Backup` tinyint(1) DEFAULT NULL,
+  `Flood` tinyint(1) DEFAULT NULL,
+  `Earthquake` tinyint(1) DEFAULT NULL,
+  `Equipment_Breakdown` tinyint(1) DEFAULT NULL,
+  `Crime` tinyint(1) DEFAULT NULL,
+  `CGL&NOA` tinyint(1) DEFAULT NULL,
+  `Business_Interruption` tinyint(1) DEFAULT NULL,
+  `Cyber_Incl_Social_Eng` tinyint(1) DEFAULT NULL,
+  `Tenants_Legal_Liability` tinyint(1) DEFAULT NULL,
+  `Spoilage` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`Client_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `client_coverage` */
+
+insert  into `client_coverage`(`Client_ID`,`Contents`,`Sewer_Backup`,`Flood`,`Earthquake`,`Equipment_Breakdown`,`Crime`,`CGL&NOA`,`Business_Interruption`,`Cyber_Incl_Social_Eng`,`Tenants_Legal_Liability`,`Spoilage`) values 
+(1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `client_location` */
 
@@ -76,7 +103,7 @@ CREATE TABLE `client_location` (
   `Answers_ID` int NOT NULL,
   `Location_Phone` int NOT NULL,
   PRIMARY KEY (`Location_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client_location` */
 
@@ -91,14 +118,25 @@ DROP TABLE IF EXISTS `coverage`;
 
 CREATE TABLE `coverage` (
   `Coverage_ID` int NOT NULL AUTO_INCREMENT,
-  `Policy_ID` int NOT NULL,
-  `Option_ID` int NOT NULL,
-  `Provider_ID` int NOT NULL,
-  `Location_ID` int NOT NULL,
+  `Coverage_Name` varchar(254) NOT NULL,
+  `Coverage_Limit` varchar(254) NOT NULL,
   PRIMARY KEY (`Coverage_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `coverage` */
+
+insert  into `coverage`(`Coverage_ID`,`Coverage_Name`,`Coverage_Limit`) values 
+(1,'Contents','$250K'),
+(2,'Sewer Backup','$250K'),
+(3,'Flood','$250K'),
+(4,'Eathquake','$250K'),
+(5,'Equipment Breakdown','$250K'),
+(6,'Crime','$10K'),
+(7,'CGL & NOA','$2M'),
+(8,'Business Interruption','$550K'),
+(9,'Cyber Incl Social Eng','$50K'),
+(10,'Tenants Legal Liability','$250K'),
+(11,'Spoilage','$250K');
 
 /*Table structure for table `coverage_option` */
 
@@ -186,6 +224,21 @@ CREATE TABLE `provider` (
 
 insert  into `provider`(`Provider_ID`) values 
 (1);
+
+/*Table structure for table `unused-coverage` */
+
+DROP TABLE IF EXISTS `unused-coverage`;
+
+CREATE TABLE `unused-coverage` (
+  `Coverage_ID` int NOT NULL AUTO_INCREMENT,
+  `Policy_ID` int NOT NULL,
+  `Option_ID` int NOT NULL,
+  `Provider_ID` int NOT NULL,
+  `Location_ID` int NOT NULL,
+  PRIMARY KEY (`Coverage_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `unused-coverage` */
 
 /*Table structure for table `user` */
 
