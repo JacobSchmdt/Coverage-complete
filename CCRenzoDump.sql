@@ -55,14 +55,15 @@ CREATE TABLE `client` (
   `Coverage_Review` tinyint(1) DEFAULT NULL,
   `Notes` varchar(254) DEFAULT NULL,
   PRIMARY KEY (`Client_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client` */
 
 insert  into `client`(`Client_ID`,`Mailing_Address`,`Client_Name`,`Email_Address`,`Phone_Number`,`Credit_Consent`,`Privacy_Consent`,`Coverage_Review`,`Notes`) values 
 (1,'123 ST','Kevin Chubb','fakeemail.com',403892454,1,1,1,'Chubb'),
 (2,'MayorGrath','Pozy','firestone.com',42324748,1,1,1,NULL),
-(3,'College Drive','Barry','barry.cit',59542394,1,1,1,'Barrel');
+(3,'College Drive','Barry','barry.cit',59542394,1,1,1,'Barrel'),
+(4,'Bruh','Bruh','Bruh',42873,1,1,1,'bruh');
 
 /*Table structure for table `client_coverage` */
 
@@ -103,14 +104,15 @@ CREATE TABLE `client_location` (
   `Answers_ID` int NOT NULL,
   `Location_Phone` int NOT NULL,
   PRIMARY KEY (`Location_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client_location` */
 
 insert  into `client_location`(`Location_ID`,`Client_ID`,`Alias`,`Physical_Address`,`Answers_ID`,`Location_Phone`) values 
 (1,1,'SRI','123 ST',1,123321),
 (2,2,'Firestone','MayorGrath',1,5323564),
-(3,3,'College','College Drive',1,53453523);
+(3,3,'College','College Drive',1,53453523),
+(4,4,'Bruh','BRuh',1,482498924);
 
 /*Table structure for table `coverage` */
 
@@ -202,14 +204,15 @@ CREATE TABLE `policy` (
   `Broker_ID` int NOT NULL,
   `Status` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`Policy_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `policy` */
 
 insert  into `policy`(`Policy_ID`,`Location_ID`,`Broker_ID`,`Status`) values 
 (1,1,1,'used'),
 (2,2,2,'used'),
-(3,3,3,'used');
+(3,3,3,'used'),
+(4,4,3,'b');
 
 /*Table structure for table `provider` */
 
