@@ -67,13 +67,8 @@
         }
     } 	
 	$id = $_GET['clientValue'];
-
-if(isset($_POST['test'])){
-         //       $datas = $_POST['data'];
-         //       $allData = implode(",",$datas);
-         //       echo $allData;
-                echo "balls";
-            }
+	
+	
 	
 	echo"
     <body style='background-color: #5168AC;'>
@@ -104,17 +99,15 @@ if(isset($_POST['test'])){
                     $row = mysqli_fetch_assoc($result);
                     if ($result->num_rows > 0) {
                         echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>
-                        <td> <input type='checkbox' name='data[]' value='{$row['Coverage_ID']}'> </td>
+                        <td> <input type='checkbox' name='{$row['Coverage_Name']}' value='Accepted'> </td>
                         <td>"; echo $row['Coverage_Limit']; echo"</td>
                         <td> Accepted </td>";
                     }
                 }
                 echo"			
             </table>
-            <input type='submit' name='test' value='submit'>
-
-        </form> ";
-        echo"    </div>";
+            </form>
+        </div>";
           //  if (isset($_POST['submit'])){
           //      $insertQuery = "INSERT INTO client_coverage WHERE Client_ID = $id
           //      VALUES ()

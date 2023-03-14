@@ -92,7 +92,8 @@ echo"
             <tr><th>Email:</th><td>";echo $row['Email_Address']; echo"</td></tr>
             <tr><th>Phone:</th><td>";echo $row['Phone_Number']; echo"</td></tr>
             <tr><th>Policy ID:</th><td>";
-            $sql = "SELECT * FROM policy, client_location WHERE policy.Location_ID = client_location.Location_ID AND client_location.Client_ID = '$id'"; 
+            //$sql = "SELECT * FROM policy, client_location WHERE policy.Location_ID = client_location.Location_ID AND client_location.Client_ID = '$id'"; 
+            $sql = "SELECT * FROM policy, client_location WHERE policy.Location_ID = client_location.Location_ID AND client_location.Client_ID = '1'"; 
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
             echo $row['Policy_ID']; echo"</td></tr>

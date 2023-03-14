@@ -32,7 +32,6 @@ $query = "INSERT INTO client (Mailing_Address, Company_Name, Client_Name, Email_
  $query2 = "INSERT INTO client_location (Client_ID, Alias, Physical_Address, Answers_ID, Location_Phone) VALUES ('1', '$companyName', '$mailingAddress', '1', '$phoneNumber')";
 
  $query3 = "UPDATE client, client_location SET client_location.Client_ID = client.Client_ID WHERE client_location.Alias = client.Company_Name";
- 
 
  //Ensures that all the queries are successful
 if(mysqli_query($conn, $query) && mysqli_query($conn, $query2) && mysqli_query($conn, $query3)){

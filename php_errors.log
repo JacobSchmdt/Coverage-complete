@@ -1,0 +1,25 @@
+[08-Mar-2023 00:06:36 UTC] PHP Warning:  Undefined array key "Consent" in C:\Coverage-complete-main\ClientCreation.php on line 21
+[08-Mar-2023 00:06:36 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 28
+[08-Mar-2023 03:31:55 UTC] PHP Warning:  Undefined array key "clientValue" in C:\Coverage-complete-main\CoverageList.php on line 63
+[08-Mar-2023 05:07:31 UTC] PHP Warning:  Undefined variable $sql in C:\Coverage-complete-main\CoverageList.php on line 65
+[08-Mar-2023 05:07:31 UTC] PHP Deprecated:  mysqli_query(): Passing null to parameter #2 ($query) of type string is deprecated in C:\Coverage-complete-main\CoverageList.php on line 65
+[08-Mar-2023 05:07:31 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in C:\Coverage-complete-main\CoverageList.php:65
+Stack trace:
+#0 C:\Coverage-complete-main\CoverageList.php(65): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in C:\Coverage-complete-main\CoverageList.php on line 65
+[08-Mar-2023 05:25:07 UTC] PHP Warning:  Undefined array key "user" in C:\Coverage-complete-main\CoverageReport.php on line 42
+[08-Mar-2023 23:46:39 UTC] PHP Warning:  Undefined array key "Consent" in C:\Coverage-complete-main\ClientCreation.php on line 21
+[08-Mar-2023 23:46:39 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 28
+[08-Mar-2023 23:59:52 UTC] PHP Warning:  Undefined array key "user" in C:\Coverage-complete-main\ClientLookup.php on line 49
+[14-Mar-2023 01:30:43 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 28
+[14-Mar-2023 01:31:48 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 28
+[14-Mar-2023 01:54:58 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
+[14-Mar-2023 01:55:11 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 98
+[14-Mar-2023 01:55:11 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 99
+[14-Mar-2023 03:53:21 UTC] PHP Warning:  Undefined array key "user" in C:\Coverage-complete-main\ClientLookup.php on line 49
+[14-Mar-2023 03:57:25 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
+[14-Mar-2023 03:57:34 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 98
+[14-Mar-2023 03:57:34 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 99
+[14-Mar-2023 03:59:55 UTC] PHP Warning:  Undefined array key "Consent" in C:\Coverage-complete-main\ClientCreation.php on line 23
+[14-Mar-2023 03:59:55 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
