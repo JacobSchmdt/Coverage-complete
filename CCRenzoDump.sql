@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.1.9 (64 bit)
-MySQL - 8.0.30 : Database - coveragecompletedb
+SQLyog Community v13.2.0 (64 bit)
+MySQL - 8.0.32 : Database - coveragecompletedb
 *********************************************************************
 */
 
@@ -56,7 +56,7 @@ CREATE TABLE `client` (
   `Notes` varchar(254) DEFAULT NULL,
   `Company_Name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`Client_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client` */
 
@@ -66,7 +66,8 @@ insert  into `client`(`Client_ID`,`Mailing_Address`,`Client_Name`,`Email_Address
 (3,'College Drive','Barry','barry.cit',59542394,1,1,'1','Barrel',NULL),
 (4,'Bruh','Bruh','Bruh',42873,1,1,'1','bruh',NULL),
 (5,'mailmail','foopa','emailemail',12354363,NULL,NULL,'','foopa','Balls'),
-(6,'phillsballstreet 43','PHill','phillsballs.com',0,NULL,NULL,'','PHill','Phills Balls');
+(6,'phillsballstreet 43','PHill','phillsballs.com',0,NULL,NULL,'','PHill','Phills Balls'),
+(7,'test','test','test',123,NULL,NULL,'','test','test');
 
 /*Table structure for table `client_coverage` */
 
@@ -80,7 +81,7 @@ CREATE TABLE `client_coverage` (
   `Earthquake` tinyint(1) DEFAULT NULL,
   `Equipment_Breakdown` tinyint(1) DEFAULT NULL,
   `Crime` tinyint(1) DEFAULT NULL,
-  `CGL&NOA` tinyint(1) DEFAULT NULL,
+  `CGL_NOA` tinyint(1) DEFAULT NULL,
   `Business_Interruption` tinyint(1) DEFAULT NULL,
   `Cyber_Incl_Social_Eng` tinyint(1) DEFAULT NULL,
   `Tenants_Legal_Liability` tinyint(1) DEFAULT NULL,
@@ -90,9 +91,9 @@ CREATE TABLE `client_coverage` (
 
 /*Data for the table `client_coverage` */
 
-insert  into `client_coverage`(`Client_ID`,`Contents`,`Sewer_Backup`,`Flood`,`Earthquake`,`Equipment_Breakdown`,`Crime`,`CGL&NOA`,`Business_Interruption`,`Cyber_Incl_Social_Eng`,`Tenants_Legal_Liability`,`Spoilage`) values 
-(1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+insert  into `client_coverage`(`Client_ID`,`Contents`,`Sewer_Backup`,`Flood`,`Earthquake`,`Equipment_Breakdown`,`Crime`,`CGL_NOA`,`Business_Interruption`,`Cyber_Incl_Social_Eng`,`Tenants_Legal_Liability`,`Spoilage`) values 
+(1,0,0,0,0,0,0,0,0,0,0,0),
+(2,1,1,1,1,0,0,0,0,0,0,0),
 (3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `client_location` */
@@ -107,7 +108,7 @@ CREATE TABLE `client_location` (
   `Answers_ID` int NOT NULL,
   `Location_Phone` int NOT NULL,
   PRIMARY KEY (`Location_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client_location` */
 
@@ -117,7 +118,8 @@ insert  into `client_location`(`Location_ID`,`Client_ID`,`Alias`,`Physical_Addre
 (3,3,'College','College Drive',1,53453523),
 (4,4,'Bruh','BRuh',1,482498924),
 (6,5,'Balls','mailmail',1,12354363),
-(7,6,'Phills Balls','phillsballstreet 43',1,0);
+(7,6,'Phills Balls','phillsballstreet 43',1,0),
+(8,7,'test','test',1,123);
 
 /*Table structure for table `coverage` */
 
@@ -127,23 +129,24 @@ CREATE TABLE `coverage` (
   `Coverage_ID` int NOT NULL AUTO_INCREMENT,
   `Coverage_Name` varchar(254) NOT NULL,
   `Coverage_Limit` varchar(254) NOT NULL,
+  `Coverage_Name_Insert` varchar(254) NOT NULL,
   PRIMARY KEY (`Coverage_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `coverage` */
 
-insert  into `coverage`(`Coverage_ID`,`Coverage_Name`,`Coverage_Limit`) values 
-(1,'Contents','$250K'),
-(2,'Sewer Backup','$250K'),
-(3,'Flood','$250K'),
-(4,'Eathquake','$250K'),
-(5,'Equipment Breakdown','$250K'),
-(6,'Crime','$10K'),
-(7,'CGL & NOA','$2M'),
-(8,'Business Interruption','$550K'),
-(9,'Cyber Incl Social Eng','$50K'),
-(10,'Tenants Legal Liability','$250K'),
-(11,'Spoilage','$250K');
+insert  into `coverage`(`Coverage_ID`,`Coverage_Name`,`Coverage_Limit`,`Coverage_Name_Insert`) values 
+(1,'Contents','$250K','Contents'),
+(2,'Sewer Backup','$250K','Sewer_Backup'),
+(3,'Flood','$250K','Flood'),
+(4,'Earthquake','$250K','Earthquake'),
+(5,'Equipment Breakdown','$250K','Equipment_Breakdown'),
+(6,'Crime','$10K','Crime'),
+(7,'CGL & NOA','$2M','CGL_NOA'),
+(8,'Business Interruption','$550K','Business_Interruption'),
+(9,'Cyber Incl Social Eng','$50K','Cyber_Incl_Social_Eng'),
+(10,'Tenants Legal Liability','$250K','Tenants_Legal_Liability'),
+(11,'Spoilage','$250K','Spoilage');
 
 /*Table structure for table `coverage_option` */
 

@@ -66,7 +66,8 @@
     //checks for the user, if not logged in sent back to the login screen
 
 
- $id = $_GET['clientValue'];
+ //$id = $_GET['clientValue'];
+ $id = $_SESSION["client"];
  $username = $_SESSION["user"];
  $sql = "SELECT Client_Name FROM client WHERE Client_ID='$id'";
  $result = mysqli_query($conn, $sql);

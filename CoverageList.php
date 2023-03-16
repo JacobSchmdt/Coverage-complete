@@ -67,60 +67,105 @@
         }
     } 	//check for user stuff
 	$id = $_GET['clientValue'];
+    $_SESSION['client'] = $id;
+
     //grabs client id that was passed
-if(isset($_POST['test'])){
-         //       $datas = $_POST['data'];
-         //       $allData = implode(",",$datas);
-         //       echo $allData;
-                echo "balls";
-            }
-	
 	echo"
     <body style='background-color: #5168AC;'>
 	    <div class='sriHeading'><h1>Schwartz Reliance Insurance</h1></div>
         <div class='optionHeader'>
-		<form method='get' action='CoverageReport.php'>
+		<form method='get' action=''>
             <a href='ClientLookup.php'><button type='button' class='clientLocationButton'>Back to Client Search</button></a>
             <a href='logOut.php'><button type='button' class='clientLocationButton'>Log Out</button></a>
+            <a href='CoverageReport.php'><button type='button' class='clientLocationButton'>SRI Coverage Report</button></a>
             <input type='hidden' name='clientValue' value='$id'>
-			<input type='submit' name='' value='SRI Coverage Review'>
+			<input type='submit' name='saved' value='Save'>
         </div><br>
         <div class='optionList'>
             <table>
                 <tr>
                     <th>Coverage Type</th><th>Selected</th><th>Limit</th><th>Status</th>
                 </tr>";
-
                 $sqlSetup = "SELECT Coverage_ID FROM coverage";
                 $resultSetup = $conn->query($sqlSetup);
                 //grabs all the coverages avaliable
                 while ($row = $resultSetup->fetch_assoc())  {
 			        $coverageID = $row['Coverage_ID'];
-                    lineLoop($coverageID);
+                    pageLoadUp($coverageID, $id);
                 } //starts lineLoop function with coverage id to display coverages
 
-                function lineLoop($coverageID){
+                function pageLoadUp($coverageID, $id){
                     $sql = "SELECT * FROM coverage WHERE Coverage_ID=$coverageID";
                     $result = mysqli_query($GLOBALS['conn'], $sql);
                     $row = mysqli_fetch_assoc($result);
                     if ($result->num_rows > 0) { //displays coverage info and such
-                        echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>
-                        <td> <input type='checkbox' name='data[]' value='{$row['Coverage_ID']}'> </td>
-                        <td>"; echo $row['Coverage_Limit']; echo"</td>
+                        $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
+                        $result2 = mysqli_query($GLOBALS['conn'], $sql2);
+                        $row2 = mysqli_fetch_assoc($result2);
+                        echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>";
+                        echo "<td><input type='checkbox' name='{$row['Coverage_Name_Insert']}' value='1' ";if($row2[$row['Coverage_Name_Insert']] == 1) echo "checked='checked'"; echo"> </td>";
+                        echo "<td>"; echo $row['Coverage_Limit']; echo"</td>
                         <td> Accepted </td>";
-                    } //NOTICE - this code is still being worked on with inserting data back into the database
-                }
-                echo"			
-            </table>
-            <input type='submit' name='test' value='submit'>
+                    }
+                } //NOTICE - this code is still being worked on with inserting data back into the database	
 
-        </form> ";
-        echo"    </div>";
+                function lineLoop($coverageID, $id){
+                    $sql = "SELECT * FROM coverage WHERE Coverage_ID=$coverageID";
+                    $result = mysqli_query($GLOBALS['conn'], $sql);
+                    $row = mysqli_fetch_assoc($result);
+                    if ($result->num_rows > 0) { //displays coverage info and such
+                        $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
+                        $result2 = mysqli_query($GLOBALS['conn'], $sql2);
+                        $row2 = mysqli_fetch_assoc($result2);
+                        echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>";
+                        echo "<td><input type='checkbox' name='{$row['Coverage_Name_Insert']}' value='1' ";if(isset($_GET[$row['Coverage_Name_Insert']]) or $row2[$row['Coverage_Name_Insert']] == 1) echo "checked='checked'"; echo"> </td>";
+                        echo "<td>"; echo $row['Coverage_Limit']; echo"</td>
+                        <td> Accepted </td>";
+                    }
+                } //NOTICE - this code is still being worked on with inserting data back into the database	
+
+            echo"</table></form></div>";
         //NOTICE - this commented out code below is for testing and might still be used later
-          //  if (isset($_POST['submit'])){
-          //      $insertQuery = "INSERT INTO client_coverage WHERE Client_ID = $id
-          //      VALUES ()
-          //echo $_POST['Contents'];
+            if (isset($_GET['saved'])){
+                $sqlSetup = "SELECT Coverage_ID FROM coverage";
+                $resultSetup = $conn->query($sqlSetup);
+                while ($row = $resultSetup->fetch_assoc())  {
+			        $coverageID = $row['Coverage_ID'];
+                    sqlUpdate($coverageID, $id);
+                }
+            }
+
+
+                function sqlUpdate($coverageID, $id){
+                    $sql = "SELECT * FROM coverage WHERE Coverage_ID=$coverageID";
+                    $result = mysqli_query($GLOBALS['conn'], $sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $covNameChange = 0;
+                    if (isset ($_GET[$row['Coverage_Name_Insert']])){
+                        $covNameChange = 1;
+                    } else {
+                        $covNameChange = 0;
+                    }
+                        $placeholder = $row['Coverage_Name_Insert'];
+                        $insertQuery = "UPDATE client_coverage
+                        SET $placeholder = {$covNameChange}
+                        WHERE Client_ID = $id";
+                        $result = mysqli_query($GLOBALS['conn'], $insertQuery);
+                }
+
+              /*  $insertQuery = "UPDATE client_coverage
+                                SET Contents = '{$_GET['Contents']}'
+                                WHERE Client_ID = $id";
+                                $result = mysqli_query($GLOBALS['conn'], $insertQuery);
+                                echo $_GET['Contents'];
+                                */
+//          echo $_POST['Contents'];
+          //if(isset($_GET['test'])){
+            //    echo "balls";
+            //    $datas = $_POST['data'];
+            //    $allData = implode(",",$datas);
+            //    echo $allData;
+            //}
         echo "<!--<div class='clientLocationList'>
             <button type='button' class='clientLocationButton'>Location ##</button><br>
         </div>-->
