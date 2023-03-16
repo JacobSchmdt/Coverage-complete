@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.2.0 (64 bit)
-MySQL - 8.0.32 : Database - coveragecompletedb
+SQLyog Community v13.1.9 (64 bit)
+MySQL - 8.0.30 : Database - coveragecompletedb
 *********************************************************************
 */
 
@@ -52,18 +52,21 @@ CREATE TABLE `client` (
   `Phone_Number` int NOT NULL,
   `Credit_Consent` tinyint(1) DEFAULT NULL,
   `Privacy_Consent` tinyint(1) DEFAULT NULL,
-  `Coverage_Review` tinyint(1) DEFAULT NULL,
+  `Coverage_Review` varchar(64) DEFAULT NULL,
   `Notes` varchar(254) DEFAULT NULL,
+  `Company_Name` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`Client_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client` */
 
-insert  into `client`(`Client_ID`,`Mailing_Address`,`Client_Name`,`Email_Address`,`Phone_Number`,`Credit_Consent`,`Privacy_Consent`,`Coverage_Review`,`Notes`) values 
-(1,'123 ST','Kevin Chubb','fakeemail.com',403892454,1,1,1,'Chubb'),
-(2,'MayorGrath','Pozy','firestone.com',42324748,1,1,1,NULL),
-(3,'College Drive','Barry','barry.cit',59542394,1,1,1,'Barrel'),
-(4,'Bruh','Bruh','Bruh',42873,1,1,1,'bruh');
+insert  into `client`(`Client_ID`,`Mailing_Address`,`Client_Name`,`Email_Address`,`Phone_Number`,`Credit_Consent`,`Privacy_Consent`,`Coverage_Review`,`Notes`,`Company_Name`) values 
+(1,'123 ST','Kevin Chubb','fakeemail.com',403892454,1,1,'1','Chubb',NULL),
+(2,'MayorGrath','Pozy','firestone.com',42324748,1,1,'1',NULL,NULL),
+(3,'College Drive','Barry','barry.cit',59542394,1,1,'1','Barrel',NULL),
+(4,'Bruh','Bruh','Bruh',42873,1,1,'1','bruh',NULL),
+(5,'mailmail','foopa','emailemail',12354363,NULL,NULL,'','foopa','Balls'),
+(6,'phillsballstreet 43','PHill','phillsballs.com',0,NULL,NULL,'','PHill','Phills Balls');
 
 /*Table structure for table `client_coverage` */
 
@@ -104,7 +107,7 @@ CREATE TABLE `client_location` (
   `Answers_ID` int NOT NULL,
   `Location_Phone` int NOT NULL,
   PRIMARY KEY (`Location_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client_location` */
 
@@ -112,7 +115,9 @@ insert  into `client_location`(`Location_ID`,`Client_ID`,`Alias`,`Physical_Addre
 (1,1,'SRI','123 ST',1,123321),
 (2,2,'Firestone','MayorGrath',1,5323564),
 (3,3,'College','College Drive',1,53453523),
-(4,4,'Bruh','BRuh',1,482498924);
+(4,4,'Bruh','BRuh',1,482498924),
+(6,5,'Balls','mailmail',1,12354363),
+(7,6,'Phills Balls','phillsballstreet 43',1,0);
 
 /*Table structure for table `coverage` */
 

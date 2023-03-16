@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
     <head>
 <?php include("db.php"); ?>
@@ -65,9 +65,9 @@
             header("Location: login.htm");
             die();
         }
-    } 	
+    } 	//check for user stuff
 	$id = $_GET['clientValue'];
-
+    //grabs client id that was passed
 if(isset($_POST['test'])){
          //       $datas = $_POST['data'];
          //       $allData = implode(",",$datas);
@@ -93,21 +93,22 @@ if(isset($_POST['test'])){
 
                 $sqlSetup = "SELECT Coverage_ID FROM coverage";
                 $resultSetup = $conn->query($sqlSetup);
+                //grabs all the coverages avaliable
                 while ($row = $resultSetup->fetch_assoc())  {
 			        $coverageID = $row['Coverage_ID'];
                     lineLoop($coverageID);
-                }
+                } //starts lineLoop function with coverage id to display coverages
 
                 function lineLoop($coverageID){
                     $sql = "SELECT * FROM coverage WHERE Coverage_ID=$coverageID";
                     $result = mysqli_query($GLOBALS['conn'], $sql);
                     $row = mysqli_fetch_assoc($result);
-                    if ($result->num_rows > 0) {
+                    if ($result->num_rows > 0) { //displays coverage info and such
                         echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>
                         <td> <input type='checkbox' name='data[]' value='{$row['Coverage_ID']}'> </td>
                         <td>"; echo $row['Coverage_Limit']; echo"</td>
                         <td> Accepted </td>";
-                    }
+                    } //NOTICE - this code is still being worked on with inserting data back into the database
                 }
                 echo"			
             </table>
@@ -115,6 +116,7 @@ if(isset($_POST['test'])){
 
         </form> ";
         echo"    </div>";
+        //NOTICE - this commented out code below is for testing and might still be used later
           //  if (isset($_POST['submit'])){
           //      $insertQuery = "INSERT INTO client_coverage WHERE Client_ID = $id
           //      VALUES ()

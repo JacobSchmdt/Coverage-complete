@@ -23,3 +23,40 @@ Stack trace:
 [14-Mar-2023 03:57:34 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 99
 [14-Mar-2023 03:59:55 UTC] PHP Warning:  Undefined array key "Consent" in C:\Coverage-complete-main\ClientCreation.php on line 23
 [14-Mar-2023 03:59:55 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
+[14-Mar-2023 04:17:00 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 81
+[14-Mar-2023 04:17:00 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 85
+[14-Mar-2023 04:17:00 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 90
+[14-Mar-2023 04:17:00 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 91
+[14-Mar-2023 04:17:00 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 92
+[14-Mar-2023 04:17:00 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 93
+[14-Mar-2023 04:18:23 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 85
+[14-Mar-2023 04:18:37 UTC] PHP Warning:  Trying to access array offset on value of type null in C:\Coverage-complete-main\CoverageReport.php on line 85
+[14-Mar-2023 04:20:10 UTC] PHP Warning:  Undefined array key "Consent" in C:\Coverage-complete-main\ClientCreation.php on line 23
+[14-Mar-2023 04:20:10 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
+[14-Mar-2023 04:20:10 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'Company_Name' in 'field list' in C:\Coverage-complete-main\ClientCreation.php:37
+Stack trace:
+#0 C:\Coverage-complete-main\ClientCreation.php(37): mysqli_query(Object(mysqli), 'INSERT INTO cli...')
+#1 {main}
+  thrown in C:\Coverage-complete-main\ClientCreation.php on line 37
+[14-Mar-2023 04:22:01 UTC] PHP Warning:  Undefined array key "Consent[]" in C:\Coverage-complete-main\ClientCreation.php on line 23
+[14-Mar-2023 04:22:01 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
+[14-Mar-2023 04:22:01 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'Company_Name' in 'field list' in C:\Coverage-complete-main\ClientCreation.php:37
+Stack trace:
+#0 C:\Coverage-complete-main\ClientCreation.php(37): mysqli_query(Object(mysqli), 'INSERT INTO cli...')
+#1 {main}
+  thrown in C:\Coverage-complete-main\ClientCreation.php on line 37
+[14-Mar-2023 04:22:08 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
+[14-Mar-2023 04:22:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'Company_Name' in 'field list' in C:\Coverage-complete-main\ClientCreation.php:37
+Stack trace:
+#0 C:\Coverage-complete-main\ClientCreation.php(37): mysqli_query(Object(mysqli), 'INSERT INTO cli...')
+#1 {main}
+  thrown in C:\Coverage-complete-main\ClientCreation.php on line 37
+[14-Mar-2023 04:23:48 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
+[14-Mar-2023 04:23:48 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Incorrect integer value: '' for column 'Coverage_Review' at row 1 in C:\Coverage-complete-main\ClientCreation.php:37
+Stack trace:
+#0 C:\Coverage-complete-main\ClientCreation.php(37): mysqli_query(Object(mysqli), 'INSERT INTO cli...')
+#1 {main}
+  thrown in C:\Coverage-complete-main\ClientCreation.php on line 37
+[14-Mar-2023 04:25:42 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
+[14-Mar-2023 18:27:03 UTC] PHP Warning:  Undefined array key "user" in C:\Coverage-complete-main\CoverageReport.php on line 61
+[14-Mar-2023 18:35:02 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
