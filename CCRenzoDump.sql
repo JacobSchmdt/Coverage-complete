@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.2.0 (64 bit)
-MySQL - 8.0.32 : Database - coveragecompletedb
+SQLyog Community v13.1.9 (64 bit)
+MySQL - 8.0.30 : Database - coveragecompletedb
 *********************************************************************
 */
 
@@ -50,19 +50,46 @@ CREATE TABLE `client` (
   `Client_Name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Email_Address` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Phone_Number` int NOT NULL,
-  `Credit_Consent` tinyint(1) DEFAULT NULL,
-  `Privacy_Consent` tinyint(1) DEFAULT NULL,
-  `Coverage_Review` tinyint(1) DEFAULT NULL,
-  `Notes` varchar(254) DEFAULT NULL,
+  `Coverage_Review` varchar(64) DEFAULT NULL,
+  `Broker_ID` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Company_Name` varchar(64) DEFAULT NULL,
+  `Notes` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`Client_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client` */
 
-insert  into `client`(`Client_ID`,`Mailing_Address`,`Client_Name`,`Email_Address`,`Phone_Number`,`Credit_Consent`,`Privacy_Consent`,`Coverage_Review`,`Notes`) values 
-(1,'123 ST','Kevin Chubb','fakeemail.com',12345,1,1,1,'Chubb'),
-(2,'MayorGrath','Pozy','firestone.com',42324748,1,1,1,NULL),
-(3,'College Drive','Barry','barry.cit',59542394,1,1,1,'Barrel');
+insert  into `client`(`Client_ID`,`Mailing_Address`,`Client_Name`,`Email_Address`,`Phone_Number`,`Coverage_Review`,`Broker_ID`,`Company_Name`,`Notes`) values 
+(1,'123 ST','Kevin Chubb','fakeemail.com',403892454,'1','Chubb',NULL,NULL),
+(2,'MayorGrath','Pozy','firestone.com',42324748,'1',NULL,NULL,NULL),
+(3,'College Drive','Barry','barry.cit',59542394,'1','Barrel',NULL,NULL);
+
+/*Table structure for table `client_coverage` */
+
+DROP TABLE IF EXISTS `client_coverage`;
+
+CREATE TABLE `client_coverage` (
+  `Client_ID` int NOT NULL AUTO_INCREMENT,
+  `Contents` int DEFAULT NULL,
+  `Sewer_Backup` int DEFAULT NULL,
+  `Flood` int DEFAULT NULL,
+  `Earthquake` int DEFAULT NULL,
+  `Equipment_Breakdown` int DEFAULT NULL,
+  `Crime` int DEFAULT NULL,
+  `CGL_NOA` int DEFAULT NULL,
+  `Business_Interruption` int DEFAULT NULL,
+  `Cyber_Incl_Social_Eng` int DEFAULT NULL,
+  `Tenants_Legal_Liability` int DEFAULT NULL,
+  `Spoilage` int DEFAULT NULL,
+  PRIMARY KEY (`Client_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `client_coverage` */
+
+insert  into `client_coverage`(`Client_ID`,`Contents`,`Sewer_Backup`,`Flood`,`Earthquake`,`Equipment_Breakdown`,`Crime`,`CGL_NOA`,`Business_Interruption`,`Cyber_Incl_Social_Eng`,`Tenants_Legal_Liability`,`Spoilage`) values 
+(1,0,0,0,0,0,0,0,0,0,0,0),
+(2,0,0,0,0,0,0,0,0,0,0,0),
+(3,NULL,0,0,0,0,0,0,0,0,0,0);
 
 /*Table structure for table `client_location` */
 
@@ -91,14 +118,26 @@ DROP TABLE IF EXISTS `coverage`;
 
 CREATE TABLE `coverage` (
   `Coverage_ID` int NOT NULL AUTO_INCREMENT,
-  `Policy_ID` int NOT NULL,
-  `Option_ID` int NOT NULL,
-  `Provider_ID` int NOT NULL,
-  `Location_ID` int NOT NULL,
+  `Coverage_Name` varchar(254) NOT NULL,
+  `Coverage_Limit` varchar(254) NOT NULL,
+  `Coverage_Name_Insert` varchar(254) NOT NULL,
   PRIMARY KEY (`Coverage_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `coverage` */
+
+insert  into `coverage`(`Coverage_ID`,`Coverage_Name`,`Coverage_Limit`,`Coverage_Name_Insert`) values 
+(1,'Contents','Cont','Contents'),
+(2,'Sewer Backup','SwrBkup','Sewer_Backup'),
+(3,'Flood','Fld','Flood'),
+(4,'Earthquake','Erthqk','Earthquake'),
+(5,'Equipment Breakdown','EquipBrkdwn','Equipment_Breakdown'),
+(6,'Crime','Cr','Crime'),
+(7,'CGL & NOA','CGL','CGL_NOA'),
+(8,'Business Interruption','BuisIntr','Business_Interruption'),
+(9,'Cyber Incl Social Eng','Cyber','Cyber_Incl_Social_Eng'),
+(10,'Tenants Legal Liability','TenLiab','Tenants_Legal_Liability'),
+(11,'Spoilage','Spoil','Spoilage');
 
 /*Table structure for table `coverage_option` */
 
@@ -164,14 +203,15 @@ CREATE TABLE `policy` (
   `Broker_ID` int NOT NULL,
   `Status` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`Policy_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `policy` */
 
 insert  into `policy`(`Policy_ID`,`Location_ID`,`Broker_ID`,`Status`) values 
 (1,1,1,'used'),
 (2,2,2,'used'),
-(3,3,3,'used');
+(3,3,3,'used'),
+(4,4,3,'b');
 
 /*Table structure for table `provider` */
 
@@ -186,6 +226,21 @@ CREATE TABLE `provider` (
 
 insert  into `provider`(`Provider_ID`) values 
 (1);
+
+/*Table structure for table `unused-coverage` */
+
+DROP TABLE IF EXISTS `unused-coverage`;
+
+CREATE TABLE `unused-coverage` (
+  `Coverage_ID` int NOT NULL AUTO_INCREMENT,
+  `Policy_ID` int NOT NULL,
+  `Option_ID` int NOT NULL,
+  `Provider_ID` int NOT NULL,
+  `Location_ID` int NOT NULL,
+  PRIMARY KEY (`Coverage_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `unused-coverage` */
 
 /*Table structure for table `user` */
 
