@@ -135,6 +135,7 @@ echo"
                                 if ($placeholder >= 1000000000) echo round(($placeholder/1000000000), 2).' billion';
                                 elseif ($placeholder >= 1000000) echo round(($placeholder/1000000), 2).' million';
                                 elseif ($placeholder >= 1000) echo round(($placeholder/1000), 2).'K';
+                                elseif ($placeholder >=1) echo $placeholder;
                                 echo"</td>";
                     }       }
                 }

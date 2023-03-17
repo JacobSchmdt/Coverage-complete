@@ -113,7 +113,7 @@
                         $row2 = mysqli_fetch_assoc($result2);
                         echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>";
                         echo "<td><input type='checkbox' name='{$row['Coverage_Name_Insert']}' value='1' ";if($row2[$row['Coverage_Name_Insert']] > 0) echo "checked='checked'"; echo"> </td>";
-                        echo "<td>$<input type='number' name='{$row['Coverage_Limit']}'";if($row2[$row['Coverage_Name_Insert']] > 0) echo "value='{$row2[$row['Coverage_Name_Insert']]}'"; echo"></td>
+                        echo "<td>$<input type='number' name='{$row['Coverage_Limit']}'";if($row2[$row['Coverage_Name_Insert']] > 0) echo "value='{$row2[$row['Coverage_Name_Insert']]}'";else echo"value='0'"; echo"></td>
                         <td> Accepted </td>";
                     }
                 } //NOTICE - this code is still being worked on with inserting data back into the database	
@@ -151,7 +151,7 @@
                     $row = mysqli_fetch_assoc($result);
                     $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
                     $coverageMoney = 0;
-                    if (isset($_GET[$row['Coverage_Name_Insert']])){
+                    if (isset($_GET[$row['Coverage_Name_Insert']]) and isset($_GET[$row['Coverage_Limit']])){
                         $coverageMoney = $_GET[$row['Coverage_Limit']];
                     } else {
                         $coverageMoney = 0;
