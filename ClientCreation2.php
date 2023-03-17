@@ -4,14 +4,12 @@
     <meta charset="utf-8">
     <title>Client Creation</title>
     <link rel="stylesheet" href="ClientCreation.css">
-
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
-</style>
+  <?php
+include("db.php");
+//opens database
+checkForUser();
+//does user check
+?>
 <!--
     <script src="Client_Creation.js"></script>
 		<div id="mySidebar" class="sidebar">
@@ -32,15 +30,16 @@
 			document.getElementById("mySidebar").style.width = "250px";
 			document.getElementById("main").style.marginLeft = "250px";
 }
+
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
 		function closeNav() {
 			document.getElementById("mySidebar").style.width = "0";
 			document.getElementById("main").style.marginLeft = "0";
 }
 	</script> -->
-</head>
-<section class="header">
-    <h1>Swartz Reliance Insurance</h1>
+  </head>
+  <section class="header">
+    <h1>Schwartz Reliance Insurance</h1>
 
 </section>
 <body>
@@ -48,8 +47,23 @@
 
         <h2> New Client Creation</h2>
 
-	    <form action="/ClientCreation.php" target="_self" method="POST">
+	<form action="/ClientCreation.php" target="_self" method="POST">
+	<?php
+    function checkForUser(){
+        session_start();
+        if(!$_SESSION["user"]){
+            header("Location: login.htm");
+            die();
+        }
+    } 
+	$username = $_SESSION["user"];
 
+	$query = "SELECT User_ID FROM user WHERE User_Name='$username';";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+echo "Broker ID:"; echo $row['User_ID']; echo "<br></br>";
+	?>
+		
 		<input type="text" id="Iname" name="Iname" value="" required placeholder="Name of Insured"><br><br>
 		
 		
@@ -67,10 +81,7 @@
 		<input type="number" id="Phone_Number" name="Phone_Number" required placeholder="Phone Number">
 		<br>
 		<br>
-	
-		<input type="number" id="Broker_ID" name="Broker_ID" required placeholder="Broker ID">
-		<br>
-		<br>
+
 		<textarea id="Description" name="Description" rows="4" cols="100" placeholder="Description"></textarea><br>
 	
 		<div class="form-group">
@@ -82,7 +93,9 @@
 		
 		</div>
 	    </form>
-        <button class="button" onclick="document.location='ClientLookup.php'"style="vertical-align: middle;"><span>ClientLookup</span></button><br><br>
+        <button class="button" onclick="document.location='ClientLookup.php'"style="vertical-align: middle;"><span>Client Lookup</span></button>
+		<button class="button" onclick="document.location='Menu.php'"style="vertical-align: middle;"><span>Menu</span></button>
+		<button class="button" onclick="document.location='logOut.php'"style="vertical-align: middle;"><span>Log Out</span></button><br><br>
     </div>
 </body>
 </html>

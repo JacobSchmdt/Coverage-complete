@@ -21,21 +21,21 @@ $phoneNumber = mysqli_real_escape_string($conn, $_POST['Phone_Number']);
 $companyName = mysqli_real_escape_string($conn, $_POST['Company']);
 $description = mysqli_real_escape_string($conn, $_POST['Description']);
 $consent = $_POST['Consent'];
-
+$brokerID = $_SESSION["user"];
 
 
 
 //queries to insert and update specific tables to ensure data shows up in proper places
-$query = "INSERT INTO client (Mailing_Address, Company_Name, Client_Name, Email_Address, Phone_Number, Coverage_Review, Notes)
- VALUES ('$mailingAddress','$companyName','$nameInsured','$emailAddress','$phoneNumber','$allConsent','$nameInsured')";
+$query2 = "INSERT INTO client (Mailing_Address, Company_Name, Client_Name, Email_Address, Phone_Number, Coverage_Review, Broker_ID, Notes)
+ VALUES ('$mailingAddress','$companyName','$nameInsured','$emailAddress','$phoneNumber','$Consent','$brokerID', '$description')";
 
- $query2 = "INSERT INTO client_location (Client_ID, Alias, Physical_Address, Answers_ID, Location_Phone) VALUES ('1', '$companyName', '$mailingAddress', '1', '$phoneNumber')";
+ $query3 = "INSERT INTO client_location (Client_ID, Alias, Physical_Address, Answers_ID, Location_Phone) VALUES ('1', '$companyName', '$mailingAddress', '1', '$phoneNumber')";
 
- $query3 = "UPDATE client, client_location SET client_location.Client_ID = client.Client_ID WHERE client_location.Alias = client.Company_Name";
+ $query4 = "UPDATE client, client_location SET client_location.Client_ID = client.Client_ID WHERE client_location.Alias = client.Company_Name";
 
- $query4 = "INSERT INTO client_coverage (Contents) VALUES ('0')";
+ $query5 = "INSERT INTO client_coverage (Contents) VALUES ('0')";
  //Ensures that all the queries are successful
-if(mysqli_query($conn, $query) && mysqli_query($conn, $query2) && mysqli_query($conn, $query3) && mysqli_query($conn, $query4)){
+if(mysqli_query($conn, $query2) && mysqli_query($conn, $query3) && mysqli_query($conn, $query4) && mysqli_query($conn, $query5)){
     header("Location: ClientLookup.php");
     echo '<script>alert("Client Created Successfully");<script>';
 }

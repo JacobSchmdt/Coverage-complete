@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
         //$_SESSION['user_id'] = $row['id'];
         session_start(); // Start session
         $_SESSION['user'] = $username;
-        header("Location: ClientLookup.php");
+        header("Location: Menu.php");
         exit();
     }    
  else {

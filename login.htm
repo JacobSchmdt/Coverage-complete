@@ -1,29 +1,30 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Login</title>
-<link rel="stylesheet" href="login.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <meta charset="utf-8">
 </head>
+<section class="header">
+    <h1>Swartz Reliance Insurance</h1>
+</section>
 <body>
-    <div class ="Image">
-        <image src="logo.jpg" alt="" height="200px" width="200px"></image>
+    <div class="nav">
+        <div class="Image">
+            <image src="logo.jpg" alt="" height="200px" width="200px"></image>
+        </div>
+        <div class="LoginBox">
+            <form action='login.php' method='post'>
+                <label for='username'>Username:</label>
+                <input type='text' id='username' name='username' required>
+                <br></br>
+                <label for='password'>Password:</label>
+                <input type='password' id='password' name='password' required>
+                <br><br>
+                <input type='submit' name='submit' value='Log In'>
+            </form>
+        </div>
     </div>
-    <div class ="LoginBox">
-       <form action='login.php' method='post'>
-        <label for='username'>Username:</label>
-        <input type='text' id='username' name='username' required>
-		<br></br>
-        <label for='password'>Password:</label>
-        <input type='password' id='password' name='password' required>
-		<br><br>
-        <input type='submit' name='submit' value='Log In'>
-        </form>
-        <a class="navbuttons" href="">Forgot Password?</a>
-        </form>
-    </div>
-    
 </body>
-
-
-
 
 </html>

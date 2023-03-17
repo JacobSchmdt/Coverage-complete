@@ -1,6 +1,6 @@
 <!doctype html> 
-
 <html> 
+<title>Client Lookup</title>
 <head>
 <?php
 include("db.php");
@@ -8,11 +8,15 @@ include("db.php");
 checkForUser();
 //does user check
 ?>
-    <title>Client Lookup</title>
 <link rel="stylesheet" href="ClientLookup.css">
-
-
-
+    <section class="header">
+        <h1>Schwartz Reliance Insurance</h1>
+    
+    </section>
+</head>
+<body>
+<div class="nav">
+<h2>Client Lookup</h2>
 <!--
     <script src="Client_Creation.js"></script>
     <div id="mySidebar" class="sidebar">
@@ -55,22 +59,18 @@ checkForUser();
             die();
         }
     } // checks for valid user established at login page, if not found sent back to login
-    echo "<div class ='Search'>
+    echo "
         <form method='post' action=''>
-        <input type='number' id='' name='clCode' placeholder='Client Code' required>
+        <input type='number' id='' name='clCode' placeholder='Search' required>
         <input type='submit' name='searched' value='Search'>
-        <a class= 'button1' href='ClientCreation.html'>New Client</a>
-        <a class= 'button1' href='logOut.php'>Log Out</a>
         </form>
-		
+        <a href='ClientCreation2.php'><button class='button' style='vertical-align: middle;'><span>New Client</span></button></a>
+		<a href='Menu.php'><button class='button' style='vertical-align: middle;'><span>Menu</span></button></a>
+        <a href='logOut.php'><button class='button' style='vertical-align: middle;'><span>Logout</span></button></a>
 		<form method='post' action''>
 		<input type='submit' name='reset' value='View All'>
 		</form>
 		
-    </div>
-
-    </head>
-
     <div class='table'>
 
     <table>
@@ -167,14 +167,7 @@ function lineLoop($id){
 	
 	?>
     </table>
-
-
-
     </div>
-
-    <body>
-
-
-
+    </div>
     </body>
     </html>
