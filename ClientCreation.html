@@ -1,79 +1,10 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Client Creation</title>
-	<style>
-body {
-  font-family: "Lato", sans-serif;
-}
+    <link rel="stylesheet" href="ClientCreation.css">
 
-.sidebar {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #6591C3;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #ffffff;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidebar a:hover {
-  color: #000;
-}
-
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color: #444;
-}
-            button.clientLocationButton {
-                background-color: #6591C3;
-                color: white;
-                border: none;
-                padding: 12px 60px;
-            }
-            button {
-                transition-delay: 0.1s;
-                cursor: pointer;
-            }
-            button:hover {
-                background-color: #FFFFFF;
-                color: black;
-            }
-
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
-}
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
@@ -101,55 +32,57 @@ body {
 			document.getElementById("mySidebar").style.width = "250px";
 			document.getElementById("main").style.marginLeft = "250px";
 }
-
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
 		function closeNav() {
 			document.getElementById("mySidebar").style.width = "0";
 			document.getElementById("main").style.marginLeft = "0";
 }
 	</script> -->
-  </head>
-<body style="background-color:#D9D9D9">	
-	<form action="/ClientCreation.php" target="_self" method="POST">
-		<label for="Iname">Name of Insured</label><br>
-		<input type="text" id="Iname" name="Iname" value="" required><br><br>
-		
-		<label for="Company">Company</label><br>
-		<input type="text" id="Company" name="Company" value="" required><br><br>
-		
-		
-		<label for="Mailing_Address">Mailing Address:</label>
-		<input type="text" id="Mailing_Address" name="Mailing_Address" required>
-		<br>
-		<br>
-		<label for="Email_Adress">Email Address</label>
-		<input type="text" id="Email_Adress" name="Email_Address" required>
-		<br>
-		<br>
-		<label for="Phone_Number">Phone Number</label>
-		<input type="number" id="Phone_Number" name="Phone_Number" required>
-		<br>
-		<br>
-		
-		<label for="Broker_ID">Broker ID</label>
-		<input type="number" id="Broker_ID" name="Broker_ID" required>
-		<br>
-		<br>
-		<label for="Description">Description:</label><br>
-		<textarea id="Description" name="Description" rows="4" cols="50"></textarea><br>
+</head>
+<section class="header">
+    <h1>Swartz Reliance Insurance</h1>
+
+</section>
+<body>
+    <div class="nav">
+
+        <h2> New Client Creation</h2>
+
+	    <form action="/ClientCreation.php" target="_self" method="POST">
+
+		<input type="text" id="Iname" name="Iname" value="" required placeholder="Name of Insured"><br><br>
 		
 		
+		<input type="text" id="Company" name="Company" value="" required placeholder="Company"><br><br>
 		
 		
+		<input type="text" id="Mailing_Address" name="Mailing_Address" required placeholder="Mailing Address">
+		<br>
+		<br>
+		
+		<input type="text" id="Email_Adress" name="Email_Address" required placeholder="Email Address">
+		<br>
+		<br>
+		
+		<input type="number" id="Phone_Number" name="Phone_Number" required placeholder="Phone Number">
+		<br>
+		<br>
+	
+		<input type="number" id="Broker_ID" name="Broker_ID" required placeholder="Broker ID">
+		<br>
+		<br>
+		<textarea id="Description" name="Description" rows="4" cols="100" placeholder="Description"></textarea><br>
+	
 		<div class="form-group">
 		
 		<input type="checkbox" id="SRI" name="Consent[]" value="SRI Coverage Review">
 		<label for="SRI">SRI Coverage Review</label><br>
 		
 		<input type="submit" name="save_multiple_checkbox" class="btnSave" value="Submit">
-		<!--<input type="submit" value="Cancel">-->
-		<a href='ClientLookup.php'><button type='button' class='clientLocationButton'>Back to Client Search</button></a>
+		
 		</div>
-	</form>
+	    </form>
+        <button class="button" onclick="document.location='ClientLookup.php'"style="vertical-align: middle;"><span>ClientLookup</span></button><br><br>
+    </div>
 </body>
 </html>
