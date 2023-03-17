@@ -1,14 +1,22 @@
 <!doctype html> 
-
 <html> 
+<title>Client Lookup</title>
 <head>
-<?php include("db.php"); ?>
-<?php checkForUser();?>
-    <title>Client Lookup</title>
+<?php
+include("db.php");
+//opens database
+checkForUser();
+//does user check
+?>
 <link rel="stylesheet" href="ClientLookup.css">
-
-
-
+    <section class="header">
+        <h1>Schwartz Reliance Insurance</h1>
+    
+    </section>
+</head>
+<body>
+<div class="nav">
+<h2>Client Lookup</h2>
 <!--
     <script src="Client_Creation.js"></script>
     <div id="mySidebar" class="sidebar">
@@ -50,23 +58,19 @@
             header("Location: login.htm");
             die();
         }
-    }
-    echo "<div class ='Search'>
+    } // checks for valid user established at login page, if not found sent back to login
+    echo "
         <form method='post' action=''>
-        <input type='number' id='clCode' name='clCode' placeholder='Client Code' required>
+        <input type='number' id='' name='clCode' placeholder='Search' required>
         <input type='submit' name='searched' value='Search'>
-        <a class= 'button1' href='ClientCreation.html'>New Client</a>
-        <a class= 'button1' href='logOut.php'>Log Out</a>
         </form>
-		
+        <a href='ClientCreation2.php'><button class='button' style='vertical-align: middle;'><span>New Client</span></button></a>
+		<a href='Menu.php'><button class='button' style='vertical-align: middle;'><span>Menu</span></button></a>
+        <a href='logOut.php'><button class='button' style='vertical-align: middle;'><span>Logout</span></button></a>
 		<form method='post' action''>
 		<input type='submit' name='reset' value='View All'>
 		</form>
 		
-    </div>
-
-    </head>
-
     <div class='table'>
 
     <table>
@@ -93,26 +97,34 @@
 ";
 $sqlSetup = "SELECT Client_ID FROM client";
 $resultSetup = $conn->query($sqlSetup);
+//grabs all client IDs 
 
 if (isset($_POST['searched'])){
 	$id = $_POST['clCode'];
 	searchLine($id);
+    //if the button to search for client id has been clicked, it takes the value
+    //from the input and searches the database for it in the searchLine function
 } else if ($resultSetup or isset($_POST['reset'])) {
 		while ($row = $resultSetup->fetch_assoc())  {
 			$id = $row['Client_ID'];
             lineLoop($id);
 		}
+        //on page loadup or if the reset button is clicked it calls the function lineLoop
+        //for every client ID that exists in the database 
 }
 function searchLine($id){
+    //this searches for an individual client code
 	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
-
+    //grabs a bunch of data corresponding with the client code to be displayed on the table
     if ($result->num_rows > 0) {
     echo "<tr><td>
 <form method='get' action='CoverageList.php'>
-<input type='submit' name='clientValue' value='{$row['Client_ID']}'></td>
-	<td>"; echo $row['Alias']; echo"</td>
+<input type='submit' name='clientValue' value='{$row['Client_ID']}'></td>";
+//creates a form for the row of data that when the submit button is clicked it passes
+//the ID to the next page
+    echo"<td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
     <td>"; echo $row['Location_Phone']; echo"</td>
     <td>"; echo $row['Email_Address']; echo "</td>
@@ -120,6 +132,7 @@ function searchLine($id){
     <td>"; echo $row['Physical_Address']; echo"</td>
     <td>"; echo $row['Notes']; echo"</td>
     </tr>";
+    //displays a table with data pulled from the database
     }   else{
 echo "<tr><td>ERROR</td>
 <td>NO</td>
@@ -129,14 +142,15 @@ echo "<tr><td>ERROR</td>
 <td></td>
 <td></td>
 <td></td>
-    </tr>";}
+    </tr>";} // this code appears when a search for a client ID is invaid
 	}
 
 function lineLoop($id){
+    //dispays all clients on the table
 	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
-
+    //selects data
     if ($result->num_rows > 0) {
     echo "<tr><td>
 <form method='get' action='CoverageList.php'>
@@ -149,18 +163,11 @@ function lineLoop($id){
     <td>"; echo $row['Physical_Address']; echo"</td>
     <td>"; echo $row['Notes']; echo"</td>
     </tr>";}
-    }
+    }// same jazz as last function
 	
 	?>
     </table>
-
-
-
     </div>
-
-    <body>
-
-
-
+    </div>
     </body>
     </html>
