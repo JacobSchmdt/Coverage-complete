@@ -89,7 +89,7 @@
         <div class='optionList'>
             <table>
                 <tr>
-                    <th>Coverage Type</th><th>Selected</th><th>Limit</th><th>Status</th>
+                    <th>Coverage Type</th><th>Selected</th><th>Limit</th>
                 </tr>";
                 $sqlSetup = "SELECT Coverage_ID FROM coverage";
                 $resultSetup = $conn->query($sqlSetup);
@@ -113,8 +113,7 @@
                         $row2 = mysqli_fetch_assoc($result2);
                         echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>";
                         echo "<td><input type='checkbox' name='{$row['Coverage_Name_Insert']}' value='1' ";if($row2[$row['Coverage_Name_Insert']] > 0) echo "checked='checked'"; echo"> </td>";
-                        echo "<td>$<input type='number' name='{$row['Coverage_Limit']}'";if($row2[$row['Coverage_Name_Insert']] > 0) echo "value='{$row2[$row['Coverage_Name_Insert']]}'";else echo"value='0'"; echo"></td>
-                        <td> Accepted </td>";
+                        echo "<td>$<input type='number' name='{$row['Coverage_Limit']}'";if($row2[$row['Coverage_Name_Insert']] > 0) echo "value='{$row2[$row['Coverage_Name_Insert']]}'";else echo"value='0'"; echo"></td>";
                     }
                 } //NOTICE - this code is still being worked on with inserting data back into the database	
 
@@ -128,8 +127,7 @@
                         $row2 = mysqli_fetch_assoc($result2);
                         echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>";
                         echo "<td><input type='checkbox' name='{$row['Coverage_Name_Insert']}' value='1' ";if(isset($_GET[$row['Coverage_Name_Insert']])) echo "checked='checked'"; echo"> </td>";
-                        echo "<td>$<input type='number' name='{$row['Coverage_Limit']}'";if(isset($_GET[$row['Coverage_Limit']])) echo" value='{$_GET[$row['Coverage_Limit']]}'></td>
-                        <td> Accepted </td>";
+                        echo "<td>$<input type='number' name='{$row['Coverage_Limit']}'";if(isset($_GET[$row['Coverage_Limit']])) echo" value='{$_GET[$row['Coverage_Limit']]}'></td>";
                     }
                 } //NOTICE - this code is still being worked on with inserting data back into the database	
 

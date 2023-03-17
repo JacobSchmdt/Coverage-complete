@@ -1,4 +1,8 @@
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 .flexing{
     display:flex;
     width:35%;
@@ -13,16 +17,17 @@
     overflow-y: scroll;
     border: solid black;
 }
-td{
-	background-color: white;
+td {
+    background-color: white;
     width: 73px;
     height: 50px;
     border: 1px solid black;
     padding: 15px;
+    color: #5168ac;
 }
-tr{
+tr {
     background-color: #5168ac;
-    color: black;
+    color: white;
 }
   body {
   background-color: #5168ac;
