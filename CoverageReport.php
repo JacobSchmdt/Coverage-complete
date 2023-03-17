@@ -110,8 +110,35 @@ echo"
             <tr><th>Provider:</th><td>";echo $row['Alias']; echo "</td></tr>
         </table><br>
         <table border='1' bgcolor='white' class='lowerTable'>
-            <tr><th>Coverage</th><th>Description</th><th>Amount Covered</th></tr>
-        </table>
+            <tr><th>Coverage</th><th>Description</th><th>Amount Covered</th></tr>";
+                $sqlSetup = "SELECT Coverage_ID FROM coverage";
+                $resultSetup = $conn->query($sqlSetup);
+                //grabs all the coverages avaliable
+                while ($row = $resultSetup->fetch_assoc())  {
+			        $coverageID = $row['Coverage_ID'];
+                    lineLoop($coverageID, $id);
+                }
+
+                function lineLoop($coverageID, $id){
+                    $sql = "SELECT * FROM coverage WHERE Coverage_ID=$coverageID";
+                    $result = mysqli_query($GLOBALS['conn'], $sql);
+                    $row = mysqli_fetch_assoc($result);
+                    if ($result->num_rows > 0) { //displays coverage info and such
+                            $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
+                            $result2 = mysqli_query($GLOBALS['conn'], $sql2);
+                            $row2 = mysqli_fetch_assoc($result2);
+                            $placeholder = $row2[$row['Coverage_Name_Insert']];
+                            if ($row2[$row['Coverage_Name_Insert']] > 0){
+                                echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>
+                                <td>"; echo $row['Coverage_Description']; echo"</td>
+                                <td>$";
+                                if ($placeholder >= 1000000000) echo round(($placeholder/1000000000), 2).' billion';
+                                elseif ($placeholder >= 1000000) echo round(($placeholder/1000000), 2).' million';
+                                elseif ($placeholder >= 1000) echo round(($placeholder/1000), 2).'K';
+                                echo"</td>";
+                    }       }
+                }
+        echo "</table>
     </div>";
 ?>
 </body>

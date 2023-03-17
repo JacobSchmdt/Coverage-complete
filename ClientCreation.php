@@ -33,8 +33,9 @@ $query = "INSERT INTO client (Mailing_Address, Company_Name, Client_Name, Email_
 
  $query3 = "UPDATE client, client_location SET client_location.Client_ID = client.Client_ID WHERE client_location.Alias = client.Company_Name";
 
+ $query4 = "INSERT INTO client_coverage (Contents) VALUES ('0')";
  //Ensures that all the queries are successful
-if(mysqli_query($conn, $query) && mysqli_query($conn, $query2) && mysqli_query($conn, $query3)){
+if(mysqli_query($conn, $query) && mysqli_query($conn, $query2) && mysqli_query($conn, $query3) && mysqli_query($conn, $query4)){
     header("Location: ClientLookup.php");
     echo '<script>alert("Client Created Successfully");<script>';
 }

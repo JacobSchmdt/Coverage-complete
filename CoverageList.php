@@ -94,7 +94,6 @@
                 $sqlSetup = "SELECT Coverage_ID FROM coverage";
                 $resultSetup = $conn->query($sqlSetup);
                 //grabs all the coverages avaliable
-                //sleep(1);
                 while ($row = $resultSetup->fetch_assoc())  {
 			        $coverageID = $row['Coverage_ID'];
                     if (isset($_GET['saved'])){
