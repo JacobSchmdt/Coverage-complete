@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.2.0 (64 bit)
-MySQL - 8.0.32 : Database - coveragecompletedb
+SQLyog Community v13.1.9 (64 bit)
+MySQL - 8.0.30 : Database - coveragecompletedb
 *********************************************************************
 */
 
@@ -75,17 +75,17 @@ DROP TABLE IF EXISTS `client_coverage`;
 
 CREATE TABLE `client_coverage` (
   `Client_ID` int NOT NULL AUTO_INCREMENT,
-  `Contents` tinyint(1) DEFAULT NULL,
-  `Sewer_Backup` tinyint(1) DEFAULT NULL,
-  `Flood` tinyint(1) DEFAULT NULL,
-  `Earthquake` tinyint(1) DEFAULT NULL,
-  `Equipment_Breakdown` tinyint(1) DEFAULT NULL,
-  `Crime` tinyint(1) DEFAULT NULL,
-  `CGL_NOA` tinyint(1) DEFAULT NULL,
-  `Business_Interruption` tinyint(1) DEFAULT NULL,
-  `Cyber_Incl_Social_Eng` tinyint(1) DEFAULT NULL,
-  `Tenants_Legal_Liability` tinyint(1) DEFAULT NULL,
-  `Spoilage` tinyint(1) DEFAULT NULL,
+  `Contents` int DEFAULT NULL,
+  `Sewer_Backup` int DEFAULT NULL,
+  `Flood` int DEFAULT NULL,
+  `Earthquake` int DEFAULT NULL,
+  `Equipment_Breakdown` int DEFAULT NULL,
+  `Crime` int DEFAULT NULL,
+  `CGL_NOA` int DEFAULT NULL,
+  `Business_Interruption` int DEFAULT NULL,
+  `Cyber_Incl_Social_Eng` int DEFAULT NULL,
+  `Tenants_Legal_Liability` int DEFAULT NULL,
+  `Spoilage` int DEFAULT NULL,
   PRIMARY KEY (`Client_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -93,7 +93,7 @@ CREATE TABLE `client_coverage` (
 
 insert  into `client_coverage`(`Client_ID`,`Contents`,`Sewer_Backup`,`Flood`,`Earthquake`,`Equipment_Breakdown`,`Crime`,`CGL_NOA`,`Business_Interruption`,`Cyber_Incl_Social_Eng`,`Tenants_Legal_Liability`,`Spoilage`) values 
 (1,0,0,0,0,0,0,0,0,0,0,0),
-(2,1,1,1,1,0,0,0,0,0,0,0),
+(2,0,0,0,0,0,0,0,0,0,0,0),
 (3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `client_location` */
@@ -136,17 +136,17 @@ CREATE TABLE `coverage` (
 /*Data for the table `coverage` */
 
 insert  into `coverage`(`Coverage_ID`,`Coverage_Name`,`Coverage_Limit`,`Coverage_Name_Insert`) values 
-(1,'Contents','$250K','Contents'),
-(2,'Sewer Backup','$250K','Sewer_Backup'),
-(3,'Flood','$250K','Flood'),
-(4,'Earthquake','$250K','Earthquake'),
-(5,'Equipment Breakdown','$250K','Equipment_Breakdown'),
-(6,'Crime','$10K','Crime'),
-(7,'CGL & NOA','$2M','CGL_NOA'),
-(8,'Business Interruption','$550K','Business_Interruption'),
-(9,'Cyber Incl Social Eng','$50K','Cyber_Incl_Social_Eng'),
-(10,'Tenants Legal Liability','$250K','Tenants_Legal_Liability'),
-(11,'Spoilage','$250K','Spoilage');
+(1,'Contents','Cont','Contents'),
+(2,'Sewer Backup','SwrBkup','Sewer_Backup'),
+(3,'Flood','Fld','Flood'),
+(4,'Earthquake','Erthqk','Earthquake'),
+(5,'Equipment Breakdown','EquipBrkdwn','Equipment_Breakdown'),
+(6,'Crime','Cr','Crime'),
+(7,'CGL & NOA','CGL','CGL_NOA'),
+(8,'Business Interruption','BuisIntr','Business_Interruption'),
+(9,'Cyber Incl Social Eng','Cyber','Cyber_Incl_Social_Eng'),
+(10,'Tenants Legal Liability','TenLiab','Tenants_Legal_Liability'),
+(11,'Spoilage','Spoil','Spoilage');
 
 /*Table structure for table `coverage_option` */
 

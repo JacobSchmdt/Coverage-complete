@@ -57,7 +57,7 @@ checkForUser();
     } // checks for valid user established at login page, if not found sent back to login
     echo "<div class ='Search'>
         <form method='post' action=''>
-        <input type='number' id='clCode' name='clCode' placeholder='Client Code' required>
+        <input type='number' id='' name='clCode' placeholder='Client Code' required>
         <input type='submit' name='searched' value='Search'>
         <a class= 'button1' href='ClientCreation.html'>New Client</a>
         <a class= 'button1' href='logOut.php'>Log Out</a>

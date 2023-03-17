@@ -60,3 +60,89 @@ Stack trace:
 [14-Mar-2023 04:25:42 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
 [14-Mar-2023 18:27:03 UTC] PHP Warning:  Undefined array key "user" in C:\Coverage-complete-main\CoverageReport.php on line 61
 [14-Mar-2023 18:35:02 UTC] PHP Warning:  Undefined variable $allConsent in C:\Coverage-complete-main\ClientCreation.php on line 30
+[16-Mar-2023 17:29:02 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Coverage-complete-main\CoverageList.php on line 96
+[16-Mar-2023 17:29:19 UTC] PHP Parse error:  Unmatched '}' in C:\Coverage-complete-main\CoverageList.php on line 99
+[16-Mar-2023 23:53:39 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Client_ID = 2' at line 3 in C:\Coverage-complete-main\CoverageList.php:162
+Stack trace:
+#0 C:\Coverage-complete-main\CoverageList.php(162): mysqli_query(Object(mysqli), 'UPDATE client_c...')
+#1 C:\Coverage-complete-main\CoverageList.php(143): sqlUpdate('2', '2')
+#2 {main}
+  thrown in C:\Coverage-complete-main\CoverageList.php on line 162
+[16-Mar-2023 23:53:43 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Client_ID = 2' at line 3 in C:\Coverage-complete-main\CoverageList.php:162
+Stack trace:
+#0 C:\Coverage-complete-main\CoverageList.php(162): mysqli_query(Object(mysqli), 'UPDATE client_c...')
+#1 C:\Coverage-complete-main\CoverageList.php(143): sqlUpdate('2', '2')
+#2 {main}
+  thrown in C:\Coverage-complete-main\CoverageList.php on line 162
+[16-Mar-2023 23:53:57 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Client_ID = 2' at line 3 in C:\Coverage-complete-main\CoverageList.php:162
+Stack trace:
+#0 C:\Coverage-complete-main\CoverageList.php(162): mysqli_query(Object(mysqli), 'UPDATE client_c...')
+#1 C:\Coverage-complete-main\CoverageList.php(143): sqlUpdate('2', '2')
+#2 {main}
+  thrown in C:\Coverage-complete-main\CoverageList.php on line 162
+[16-Mar-2023 23:55:00 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Client_ID = 2' at line 3 in C:\Coverage-complete-main\CoverageList.php:162
+Stack trace:
+#0 C:\Coverage-complete-main\CoverageList.php(162): mysqli_query(Object(mysqli), 'UPDATE client_c...')
+#1 C:\Coverage-complete-main\CoverageList.php(143): sqlUpdate('2', '2')
+#2 {main}
+  thrown in C:\Coverage-complete-main\CoverageList.php on line 162
+[16-Mar-2023 23:55:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Client_ID = 2' at line 3 in C:\Coverage-complete-main\CoverageList.php:162
+Stack trace:
+#0 C:\Coverage-complete-main\CoverageList.php(162): mysqli_query(Object(mysqli), 'UPDATE client_c...')
+#1 C:\Coverage-complete-main\CoverageList.php(143): sqlUpdate('2', '2')
+#2 {main}
+  thrown in C:\Coverage-complete-main\CoverageList.php on line 162
+[17-Mar-2023 00:04:02 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Client_ID = 1' at line 3 in C:\Coverage-complete-main\CoverageList.php:158
+Stack trace:
+#0 C:\Coverage-complete-main\CoverageList.php(158): mysqli_query(Object(mysqli), 'UPDATE client_c...')
+#1 C:\Coverage-complete-main\CoverageList.php(143): sqlUpdate('5', '1')
+#2 {main}
+  thrown in C:\Coverage-complete-main\CoverageList.php on line 158
+[17-Mar-2023 00:05:56 UTC] PHP Parse error:  syntax error, unexpected token "if" in C:\Coverage-complete-main\CoverageList.php on line 154
+[17-Mar-2023 00:06:08 UTC] PHP Parse error:  syntax error, unexpected token "{" in C:\Coverage-complete-main\CoverageList.php on line 154
+[17-Mar-2023 00:07:58 UTC] PHP Parse error:  Unclosed '{' on line 148 does not match ')' in C:\Coverage-complete-main\CoverageList.php on line 157
+[17-Mar-2023 00:25:22 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Coverage-complete-main\CoverageList.php on line 156
+[17-Mar-2023 00:25:44 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Client_ID = 1' at line 3 in C:\Coverage-complete-main\CoverageList.php:163
+Stack trace:
+#0 C:\Coverage-complete-main\CoverageList.php(163): mysqli_query(Object(mysqli), 'UPDATE client_c...')
+#1 C:\Coverage-complete-main\CoverageList.php(143): sqlUpdate('2', '1')
+#2 {main}
+  thrown in C:\Coverage-complete-main\CoverageList.php on line 163
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:11:27 UTC] PHP Deprecated:  Implicit conversion from float 0.1 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Deprecated:  Implicit conversion from float 0.25 to int loses precision in C:\Coverage-complete-main\CoverageList.php on line 100
+[17-Mar-2023 01:16:21 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Client_ID = 1' at line 3 in C:\Coverage-complete-main\CoverageList.php:164
+Stack trace:
+#0 C:\Coverage-complete-main\CoverageList.php(164): mysqli_query(Object(mysqli), 'UPDATE client_c...')
+#1 C:\Coverage-complete-main\CoverageList.php(144): sqlUpdate('2', '1')
+#2 {main}
+  thrown in C:\Coverage-complete-main\CoverageList.php on line 164
+[17-Mar-2023 01:40:09 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE Client_ID = 1' at line 3 in C:\Coverage-complete-main\CoverageList.php:164
+Stack trace:
+#0 C:\Coverage-complete-main\CoverageList.php(164): mysqli_query(Object(mysqli), 'UPDATE client_c...')
+#1 C:\Coverage-complete-main\CoverageList.php(143): sqlUpdate('2', '1')
+#2 {main}
+  thrown in C:\Coverage-complete-main\CoverageList.php on line 164
+[17-Mar-2023 01:55:48 UTC] PHP Parse error:  syntax error, unexpected token ";" in C:\Coverage-complete-main\CoverageList.php on line 132
+[17-Mar-2023 02:03:21 UTC] PHP Parse error:  syntax error, unexpected double-quoted string "" in C:\Coverage-complete-main\CoverageList.php on line 132
+[17-Mar-2023 02:05:09 UTC] PHP Parse error:  syntax error, unexpected token "echo" in C:\Coverage-complete-main\CoverageList.php on line 132
+[17-Mar-2023 02:06:52 UTC] PHP Parse error:  syntax error, unexpected token "echo", expecting ")" in C:\Coverage-complete-main\CoverageList.php on line 132
