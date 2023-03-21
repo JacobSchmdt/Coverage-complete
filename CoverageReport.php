@@ -69,7 +69,7 @@
  //$id = $_GET['clientValue'];
  $id = $_SESSION["client"];
  $username = $_SESSION["user"];
- $sql = "SELECT Client_Name FROM client WHERE Client_ID='$id'";
+ $sql = "SELECT * FROM client WHERE Client_ID='$id'";
  $result = mysqli_query($conn, $sql);
  $row = mysqli_fetch_assoc($result);
  //grabs the passed ID value and also the user name of the broker for the form
@@ -84,7 +84,7 @@ echo"
 	</form>
     <a href='logOut.php'><button type='button' class='clientLocationButton'>Log Out</button></a>
         <table class='upperTable'>
-            <tr><th>Client:</th><td>"; echo $row['Client_Name']; echo"</td><th>Broker:</th><td>";
+            <tr><th>Client:</th><td>"; echo $row['Client_First_Name'] . " " . $row['Client_Last_Name']; echo"</td><th>Broker:</th><td>";
             $sql = "SELECT Name FROM user WHERE User_Name='$username';";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);

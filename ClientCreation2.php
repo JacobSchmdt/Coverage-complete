@@ -64,8 +64,11 @@ $row = mysqli_fetch_assoc($result);
 echo "Broker ID:"; echo $row['User_ID']; echo "<br></br>";
 	?>
 		
-		<input type="text" id="Iname" name="Iname" value="" required placeholder="Name of Insured"><br><br>
-		
+		<input type="text" id="Fname" name="Fname" value="" required placeholder="First Name"><br><br>
+
+
+		<input type="text" id="Lname" name="Lname" value="" required placeholder="Last Name"><br><br>
+
 		
 		<input type="text" id="Company" name="Company" value="" required placeholder="Company"><br><br>
 		

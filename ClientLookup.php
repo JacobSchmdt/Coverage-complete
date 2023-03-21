@@ -79,6 +79,8 @@ checkForUser();
 
     <th>Customer ID</font></th>
 
+    <th>Client Name</font></th>
+
     <th>Company Name</font></th>
 
     <th>Phone</font></th>
@@ -101,7 +103,7 @@ $resultSetup = $conn->query($sqlSetup);
 
 if (isset($_POST['searched'])){
 	$id = $_POST['clCode'];
-	searchLine($id);
+	searchId($id);
     //if the button to search for client id has been clicked, it takes the value
     //from the input and searches the database for it in the searchLine function
 } else if ($resultSetup or isset($_POST['reset'])) {
@@ -112,7 +114,7 @@ if (isset($_POST['searched'])){
         //on page loadup or if the reset button is clicked it calls the function lineLoop
         //for every client ID that exists in the database 
 }
-function searchLine($id){
+function searchId($id){
     //this searches for an individual client code
 	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
@@ -124,7 +126,8 @@ function searchLine($id){
 <input type='submit' name='clientValue' value='{$row['Client_ID']}'></td>";
 //creates a form for the row of data that when the submit button is clicked it passes
 //the ID to the next page
-    echo"<td>"; echo $row['Alias']; echo"</td>
+    echo"<td>"; echo $row['Client_First_Name'] . " " . $row['Client_Last_Name']; echo"</td>
+    <td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
     <td>"; echo $row['Location_Phone']; echo"</td>
     <td>"; echo $row['Email_Address']; echo "</td>
@@ -145,6 +148,48 @@ echo "<tr><td>ERROR</td>
     </tr>";} // this code appears when a search for a client ID is invaid
 	}
 
+
+
+
+
+function searchName($id){
+    //this searches for an individual client code
+	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $row = mysqli_fetch_assoc($result);
+    //grabs a bunch of data corresponding with the client code to be displayed on the table
+    if ($result->num_rows > 0) {
+    echo "<tr><td>
+<form method='get' action='CoverageList.php'>
+<input type='submit' name='clientValue' value='{$row['Client_ID']}'></td>";
+//creates a form for the row of data that when the submit button is clicked it passes
+//the ID to the next page
+    echo"<td>"; echo $row['Client_First_Name'] . " " . $row['Client_Last_Name']; echo"</td>
+    <td>"; echo $row['Alias']; echo"</td>
+    <td>"; echo $row['Phone_Number']; echo"</td>
+    <td>"; echo $row['Location_Phone']; echo"</td>
+    <td>"; echo $row['Email_Address']; echo "</td>
+    <td>"; echo $row['Mailing_Address'];echo "</td>
+    <td>"; echo $row['Physical_Address']; echo"</td>
+    <td>"; echo $row['Notes']; echo"</td>
+    </tr>";
+    //displays a table with data pulled from the database
+    }   else{
+echo "<tr><td>ERROR</td>
+<td>NO</td>
+<td>CLIENT</td> 
+<td>CODE</td> 
+<td>FOUND</td>
+<td></td>
+<td></td>
+<td></td>
+    </tr>";} // this code appears when a search for a client ID is invaid
+}
+
+
+
+
+
 function lineLoop($id){
     //dispays all clients on the table
 	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
@@ -155,7 +200,8 @@ function lineLoop($id){
     echo "<tr><td>
 <form method='get' action='CoverageList.php'>
 <input type='submit' name='clientValue' value='$id'></td>
-	<td>"; echo $row['Alias']; echo"</td>
+    <td>"; echo $row['Client_First_Name'] . " " . $row['Client_Last_Name']; echo"</td>
+    <td>"; echo $row['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
     <td>"; echo $row['Location_Phone']; echo"</td>
     <td>"; echo $row['Email_Address']; echo "</td>

@@ -111,7 +111,7 @@
                         $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
                         $result2 = mysqli_query($GLOBALS['conn'], $sql2);
                         $row2 = mysqli_fetch_assoc($result2);
-                        echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>";
+                        echo "<tr><td> Provider:"; provider($row['Coverage_Name_Insert'], $id); echo $row['Coverage_Name']; echo"</td>";
                         echo "<td><input type='checkbox' name='{$row['Coverage_Name_Insert']}' value='1' ";if($row2[$row['Coverage_Name_Insert']] > 0) echo "checked='checked'"; echo"> </td>";
                         echo "<td>$<input type='number' name='{$row['Coverage_Limit']}'";if($row2[$row['Coverage_Name_Insert']] > 0) echo "value='{$row2[$row['Coverage_Name_Insert']]}'";else echo"value='0'"; echo"></td>";
                     }
@@ -125,7 +125,7 @@
                         $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
                         $result2 = mysqli_query($GLOBALS['conn'], $sql2);
                         $row2 = mysqli_fetch_assoc($result2);
-                        echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>";
+                        echo "<tr><td> Provider:"; provider($row['Coverage_Name_Insert'], $id); echo $row['Coverage_Name']; echo"</td>";
                         echo "<td><input type='checkbox' name='{$row['Coverage_Name_Insert']}' value='1' ";if(isset($_GET[$row['Coverage_Name_Insert']])) echo "checked='checked'"; echo"> </td>";
                         echo "<td>$<input type='number' name='{$row['Coverage_Limit']}'";if(isset($_GET[$row['Coverage_Limit']])) echo" value='{$_GET[$row['Coverage_Limit']]}'></td>";
                     }
@@ -142,23 +142,34 @@
                 }
             }
 
+            function provider($CNI, $id){
+            echo "<select name='provide' id='$id'>
+            <option value='Intact'>Intact</option>
+            <option value='Wawanesa'>Wawanesa</option>
+            <option value='Economical'>Economical</option>
+            <option value='Portage'>Portage</option>
+            <option value='Peace_Hills'>Peace Hills</option>
+            <option value='Northbridge'>Northbridge</option>
+            <option value='SGI'>SGI</option>
+            </select>";
+            }
 
-                function sqlUpdate($coverageID, $id){
-                    $sql = "SELECT * FROM coverage WHERE Coverage_ID=$coverageID";
-                    $result = mysqli_query($GLOBALS['conn'], $sql);
-                    $row = mysqli_fetch_assoc($result);
-                    $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
+            function sqlUpdate($coverageID, $id){
+                $sql = "SELECT * FROM coverage WHERE Coverage_ID=$coverageID";
+                $result = mysqli_query($GLOBALS['conn'], $sql);
+                $row = mysqli_fetch_assoc($result);
+                $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
+                $coverageMoney = 0;
+                if (isset($_GET[$row['Coverage_Name_Insert']]) and isset($_GET[$row['Coverage_Limit']])){
+                    $coverageMoney = $_GET[$row['Coverage_Limit']];
+                } else {
                     $coverageMoney = 0;
-                    if (isset($_GET[$row['Coverage_Name_Insert']]) and isset($_GET[$row['Coverage_Limit']])){
-                        $coverageMoney = $_GET[$row['Coverage_Limit']];
-                    } else {
-                        $coverageMoney = 0;
-                    }
-                        $placeholder = $row['Coverage_Name_Insert'];
-                        $insertQuery = "UPDATE client_coverage
-                        SET $placeholder = $coverageMoney
-                        WHERE Client_ID = $id";
-                        $result = mysqli_query($GLOBALS['conn'], $insertQuery);
+                }
+                    $placeholder = $row['Coverage_Name_Insert'];
+                    $insertQuery = "UPDATE client_coverage
+                    SET $placeholder = $coverageMoney
+                    WHERE Client_ID = $id";
+                    $result = mysqli_query($GLOBALS['conn'], $insertQuery);
                     
                 }
         echo "<!--<div class='clientLocationList'>

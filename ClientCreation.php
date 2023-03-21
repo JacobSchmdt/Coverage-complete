@@ -14,7 +14,8 @@ include("db.php");
 
 
 //WIPES all inputs for SQL Injection protection
-$nameInsured = mysqli_real_escape_string($conn, $_POST['Iname']);
+$CFName = mysqli_real_escape_string($conn, $_POST['Fname']);
+$CLName = mysqli_real_escape_string($conn, $_POST['Lname']);
 $mailingAddress = mysqli_real_escape_string($conn, $_POST['Mailing_Address']);
 $emailAddress = mysqli_real_escape_string($conn, $_POST['Email_Address']);
 $phoneNumber = mysqli_real_escape_string($conn, $_POST['Phone_Number']);
@@ -26,8 +27,8 @@ $brokerID = $_SESSION["user"];
 
 
 //queries to insert and update specific tables to ensure data shows up in proper places
-$query2 = "INSERT INTO client (Mailing_Address, Company_Name, Client_Name, Email_Address, Phone_Number, Coverage_Review, Broker_ID, Notes)
- VALUES ('$mailingAddress','$companyName','$nameInsured','$emailAddress','$phoneNumber','$Consent','$brokerID', '$description')";
+$query2 = "INSERT INTO client (Mailing_Address, Company_Name, Client_First_Name, Client_Last_Name, Email_Address, Phone_Number, Coverage_Review, Broker_ID, Notes)
+ VALUES ('$mailingAddress','$companyName','$CFName','$CLName','$emailAddress','$phoneNumber','$Consent','$brokerID', '$description')";
 
  $query3 = "INSERT INTO client_location (Client_ID, Alias, Physical_Address, Answers_ID, Location_Phone) VALUES ('1', '$companyName', '$mailingAddress', '1', '$phoneNumber')";
 
