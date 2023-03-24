@@ -61,7 +61,7 @@ checkForUser();
     } // checks for valid user established at login page, if not found sent back to login
     echo "
         <form method='post' action=''>
-        <input type='number' id='' name='clCode' placeholder='Search' required>
+        <input type='text' id='' name='clCode' placeholder='Search' required>
         <input type='submit' name='searched' value='Search'>
         </form>
         <a href='ClientCreation2.php'><button class='button' style='vertical-align: middle;'><span>New Client</span></button></a>
@@ -116,36 +116,30 @@ if (isset($_POST['searched'])){
 }
 function searchId($id){
     //this searches for an individual client code
-	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
+	$sql = "SELECT * FROM client WHERE Client_ID = $id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
     //grabs a bunch of data corresponding with the client code to be displayed on the table
     if ($result->num_rows > 0) {
+        $sql2 = "SELECT * FROM client_location WHERE Client_ID = {$row['Client_ID']}";
+        $result2 = mysqli_query($GLOBALS['conn'], $sql2);
+        $row2 = mysqli_fetch_assoc($result2);
     echo "<tr><td>
 <form method='get' action='CoverageList.php'>
 <input type='submit' name='clientValue' value='{$row['Client_ID']}'></td>";
 //creates a form for the row of data that when the submit button is clicked it passes
 //the ID to the next page
     echo"<td>"; echo $row['Client_First_Name'] . " " . $row['Client_Last_Name']; echo"</td>
-    <td>"; echo $row['Alias']; echo"</td>
+    <td>"; echo $row2['Alias']; echo"</td>
     <td>"; echo $row['Phone_Number']; echo"</td>
-    <td>"; echo $row['Location_Phone']; echo"</td>
+    <td>"; echo $row2['Location_Phone']; echo"</td>
     <td>"; echo $row['Email_Address']; echo "</td>
     <td>"; echo $row['Mailing_Address'];echo "</td>
-    <td>"; echo $row['Physical_Address']; echo"</td>
+    <td>"; echo $row2['Physical_Address']; echo"</td>
     <td>"; echo $row['Notes']; echo"</td>
     </tr>";
     //displays a table with data pulled from the database
-    }   else{
-echo "<tr><td>ERROR</td>
-<td>NO</td>
-<td>CLIENT</td> 
-<td>CODE</td> 
-<td>FOUND</td>
-<td></td>
-<td></td>
-<td></td>
-    </tr>";} // this code appears when a search for a client ID is invaid
+    }   else{ searchName($id);} // this code appears when a search for a client ID is invaid
 	}
 
 
@@ -154,11 +148,14 @@ echo "<tr><td>ERROR</td>
 
 function searchName($id){
     //this searches for an individual client code
-	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
+	$sql = "SELECT * FROM client WHERE Client_First_Name = $id";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
     //grabs a bunch of data corresponding with the client code to be displayed on the table
     if ($result->num_rows > 0) {
+        $sql2 = "SELECT * FROM client_location WHERE Client_ID = {$row['Client_ID']}";
+        $result2 = mysqli_query($GLOBALS['conn'], $sql2);
+        $row2 = mysqli_fetch_assoc($result2);
     echo "<tr><td>
 <form method='get' action='CoverageList.php'>
 <input type='submit' name='clientValue' value='{$row['Client_ID']}'></td>";
