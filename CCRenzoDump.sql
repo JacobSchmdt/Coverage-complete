@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.2.0 (64 bit)
-MySQL - 8.0.32 : Database - coveragecompletedb
+SQLyog Community v13.1.9 (64 bit)
+MySQL - 8.0.30 : Database - coveragecompletedb
 *********************************************************************
 */
 
@@ -34,11 +34,20 @@ DROP TABLE IF EXISTS `category`;
 
 CREATE TABLE `category` (
   `Category_ID` int NOT NULL AUTO_INCREMENT,
-  `Description` varchar(254) NOT NULL,
+  `Category_Name` varchar(254) NOT NULL,
+  `Category_Name_Insert` varchar(254) NOT NULL,
+  `Category_Limit` varchar(254) NOT NULL,
+  `Category_Description` varchar(254) DEFAULT 'Balls',
   PRIMARY KEY (`Category_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `category` */
+
+insert  into `category`(`Category_ID`,`Category_Name`,`Category_Name_Insert`,`Category_Limit`,`Category_Description`) values 
+(1,'Comm. Building Owner','CommBuildingOwner','CommBuildOwn','Balls'),
+(2,'Restaurant','Restaurant','Rest','Balls'),
+(3,'Auto Garage','AutoGarage','AutoGar','Balls'),
+(4,'Pub','Pub','Pub','Balls');
 
 /*Table structure for table `client` */
 
@@ -46,24 +55,24 @@ DROP TABLE IF EXISTS `client`;
 
 CREATE TABLE `client` (
   `Client_ID` int NOT NULL AUTO_INCREMENT,
-  `Mailing_Address` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Mailing_Address` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `Client_First_Name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Client_Last_Name` varchar(64) NOT NULL,
-  `Email_Address` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `Phone_Number` int NOT NULL,
+  `Email_Address` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Phone_Number` varchar(254) DEFAULT NULL,
   `Coverage_Review` varchar(64) DEFAULT NULL,
   `Broker_ID` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `Company_Name` varchar(64) DEFAULT NULL,
   `Notes` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`Client_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client` */
 
 insert  into `client`(`Client_ID`,`Mailing_Address`,`Client_First_Name`,`Client_Last_Name`,`Email_Address`,`Phone_Number`,`Coverage_Review`,`Broker_ID`,`Company_Name`,`Notes`) values 
-(1,'123 ST','Kevin','Chubb','fakeemail.com',403892454,'1','Chubb',NULL,NULL),
-(2,'MayorGrath','Pozy','Man','firestone.com',42324748,'1',NULL,NULL,NULL),
-(3,'College Drive','Barry','Lab','barry.cit',59542394,'1','Barrel',NULL,NULL);
+(1,'123 ST','Kevin','Chubb','fakeemail.com','403892454','1','Chubb',NULL,NULL),
+(2,'MayorGrath','Pozy','Man','firestone.com','42324748','1',NULL,NULL,NULL),
+(3,'College Drive','Barry','Lab','barry.cit','59542394','1','Barrel',NULL,NULL);
 
 /*Table structure for table `client_coverage` */
 
@@ -83,12 +92,12 @@ CREATE TABLE `client_coverage` (
   `Tenants_Legal_Liability` int DEFAULT NULL,
   `Spoilage` int DEFAULT NULL,
   PRIMARY KEY (`Client_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client_coverage` */
 
 insert  into `client_coverage`(`Client_ID`,`Contents`,`Sewer_Backup`,`Flood`,`Earthquake`,`Equipment_Breakdown`,`Crime`,`CGL_NOA`,`Business_Interruption`,`Cyber_Incl_Social_Eng`,`Tenants_Legal_Liability`,`Spoilage`) values 
-(1,100000,0,0,0,2000000,0,0,0,0,0,500000),
+(1,100000,2000,0,0,2000000,0,0,0,0,0,500000),
 (2,50000,0,0,0,100000,0,0,0,0,0,1500000),
 (3,NULL,0,0,0,0,0,0,0,0,0,0);
 
@@ -100,18 +109,18 @@ CREATE TABLE `client_location` (
   `Location_ID` int NOT NULL AUTO_INCREMENT,
   `Client_ID` int NOT NULL,
   `Alias` varchar(64) NOT NULL,
-  `Physical_Address` varchar(254) NOT NULL,
-  `Answers_ID` int NOT NULL,
-  `Location_Phone` int NOT NULL,
+  `Physical_Address` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Location_Phone` varchar(254) DEFAULT NULL,
+  `Provider` varchar(254) NOT NULL,
   PRIMARY KEY (`Location_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `client_location` */
 
-insert  into `client_location`(`Location_ID`,`Client_ID`,`Alias`,`Physical_Address`,`Answers_ID`,`Location_Phone`) values 
-(1,1,'SRI','123 ST',1,123321),
-(2,2,'Firestone','MayorGrath',1,5323564),
-(3,3,'College','College Drive',1,53453523);
+insert  into `client_location`(`Location_ID`,`Client_ID`,`Alias`,`Physical_Address`,`Location_Phone`,`Provider`) values 
+(1,1,'SRI','123 ST','123321','Intact'),
+(2,2,'Firestone','MayorGrath','5323564','Portage'),
+(3,3,'College','College Drive','53453523','SGI');
 
 /*Table structure for table `coverage` */
 

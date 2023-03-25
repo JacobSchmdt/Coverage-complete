@@ -71,8 +71,10 @@ echo "Broker ID:"; echo $row['User_ID']; echo "<br></br>";
 
 		
 		<input type="text" id="Company" name="Company" value="" required placeholder="Company"><br><br>
+
+		<input type="text" id="Provider" name="Provider" value="" required placeholder="Provider"><br><br>
 		
-		
+		<!--
 		<input type="text" id="Mailing_Address" name="Mailing_Address" required placeholder="Mailing Address">
 		<br>
 		<br>
@@ -84,7 +86,7 @@ echo "Broker ID:"; echo $row['User_ID']; echo "<br></br>";
 		<input type="number" id="Phone_Number" name="Phone_Number" required placeholder="Phone Number">
 		<br>
 		<br>
-
+		-->
 		<textarea id="Description" name="Description" rows="4" cols="100" placeholder="Description"></textarea><br>
 	
 		<div class="form-group">

@@ -69,7 +69,7 @@
  //$id = $_GET['clientValue'];
  $id = $_SESSION["client"];
  $username = $_SESSION["user"];
- $sql = "SELECT * FROM client WHERE Client_ID='$id'";
+ $sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
  $result = mysqli_query($conn, $sql);
  $row = mysqli_fetch_assoc($result);
  //grabs the passed ID value and also the user name of the broker for the form
@@ -85,29 +85,17 @@ echo"
     <a href='logOut.php'><button type='button' class='clientLocationButton'>Log Out</button></a>
         <table class='upperTable'>
             <tr><th>Client:</th><td>"; echo $row['Client_First_Name'] . " " . $row['Client_Last_Name']; echo"</td><th>Broker:</th><td>";
-            $sql = "SELECT Name FROM user WHERE User_Name='$username';";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-            echo $row['Name']; 
+            $sql2 = "SELECT Name FROM user WHERE User_Name='$username';";
+            $result2 = mysqli_query($conn, $sql2);
+            $row2 = mysqli_fetch_assoc($result2);
+            echo $row2['Name']; 
             //grabbed the name of the broker and displayed on the page
             echo "</td></tr>
-            <tr><th>Client Code:</th><td>";
-            $sql = "SELECT * FROM client WHERE Client_ID='$id'";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
+            <tr><th>Customer ID:</th><td>";
             echo $row['Client_ID']; echo "</td></tr>
-            <tr><th>Name of holder:</th><td>";echo $row['Notes']; echo"</td></tr>
-            <tr><th>Email:</th><td>";echo $row['Email_Address']; echo"</td></tr>
-            <tr><th>Phone:</th><td>";echo $row['Phone_Number']; echo"</td></tr>
-            <tr><th>Policy ID:</th><td>";
-            //ignore this comment down here it was commented out because it will be used in a later version of the program
-            //$sql = "SELECT * FROM policy, client_location WHERE policy.Location_ID = client_location.Location_ID AND client_location.Client_ID = '$id'"; 
-            $sql = "SELECT * FROM policy, client_location WHERE policy.Location_ID = client_location.Location_ID AND client_location.Client_ID = '1'"; 
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-            //this displays more client info
-            echo $row['Policy_ID']; echo"</td></tr>
-            <tr><th>Provider:</th><td>";echo $row['Alias']; echo "</td></tr>
+            <tr><th>Company:</th><td>";echo $row['Alias']; echo"</td></tr>
+            <tr><th>Provider:</th><td>";echo $row['Provider']; echo"</td></tr>
+            <tr><th>Notes:</th><td>";echo $row['Notes']; echo"</td></tr>
         </table><br>
         <table border='1' bgcolor='white' class='lowerTable'>
             <tr><th>Coverage</th><th>Description</th><th>Amount Covered</th></tr>";

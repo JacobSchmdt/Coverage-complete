@@ -71,16 +71,18 @@
             die();
         }
     } 	//check for user stuff
-	$id = $_GET['clientValue'];
-    $_SESSION['client'] = $id;
-
+	//$id = $_GET['clientValue'];
+    //$_SESSION['client'] = $id;
+    $id = $_SESSION["client"];
+    //echo $_SESSION["client"];
+    //echo $id;
     //grabs client id that was passed
 	echo"
     <body style='background-color: #5168AC;'>
 	    <div class='sriHeading'><h1>Schwartz Reliance Insurance</h1></div>
         <div class='optionHeader'>
 		<form method='get' action=''>
-            <a href='ClientLookup.php'><button type='button' class='clientLocationButton'>Back to Client Search</button></a>
+            <a href='ClientMenu.php'><button type='button' class='clientLocationButton'>Back to Client Menu</button></a>
             <a href='logOut.php'><button type='button' class='clientLocationButton'>Log Out</button></a>
             <a href='CoverageReport.php'><button type='button' class='clientLocationButton'>SRI Coverage Report</button></a>
             <input type='hidden' name='clientValue' value='$id'>
@@ -111,7 +113,7 @@
                         $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
                         $result2 = mysqli_query($GLOBALS['conn'], $sql2);
                         $row2 = mysqli_fetch_assoc($result2);
-                        echo "<tr><td> Provider:"; provider($row['Coverage_Name_Insert'], $id); echo $row['Coverage_Name']; echo"</td>";
+                        echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>";
                         echo "<td><input type='checkbox' name='{$row['Coverage_Name_Insert']}' value='1' ";if($row2[$row['Coverage_Name_Insert']] > 0) echo "checked='checked'"; echo"> </td>";
                         echo "<td>$<input type='number' name='{$row['Coverage_Limit']}'";if($row2[$row['Coverage_Name_Insert']] > 0) echo "value='{$row2[$row['Coverage_Name_Insert']]}'";else echo"value='0'"; echo"></td>";
                     }
@@ -125,7 +127,7 @@
                         $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
                         $result2 = mysqli_query($GLOBALS['conn'], $sql2);
                         $row2 = mysqli_fetch_assoc($result2);
-                        echo "<tr><td> Provider:"; provider($row['Coverage_Name_Insert'], $id); echo $row['Coverage_Name']; echo"</td>";
+                        echo "<tr><td>"; echo $row['Coverage_Name']; echo"</td>";
                         echo "<td><input type='checkbox' name='{$row['Coverage_Name_Insert']}' value='1' ";if(isset($_GET[$row['Coverage_Name_Insert']])) echo "checked='checked'"; echo"> </td>";
                         echo "<td>$<input type='number' name='{$row['Coverage_Limit']}'";if(isset($_GET[$row['Coverage_Limit']])) echo" value='{$_GET[$row['Coverage_Limit']]}'></td>";
                     }
@@ -161,7 +163,7 @@
                 $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
                 $coverageMoney = 0;
                 if (isset($_GET[$row['Coverage_Name_Insert']]) and isset($_GET[$row['Coverage_Limit']])){
-                    $coverageMoney = $_GET[$row['Coverage_Limit']];
+                    $coverageMoney = mysqli_real_escape_string($GLOBALS['conn'], $_GET[$row['Coverage_Limit']]);
                 } else {
                     $coverageMoney = 0;
                 }
