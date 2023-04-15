@@ -1,4 +1,5 @@
 <?php
+
 // Check if form is submitted
 if (isset($_POST['submit'])) {
 
@@ -17,17 +18,17 @@ if (isset($_POST['submit'])) {
     }
 
     // Hash the password
-    //password_hash = password_hash($password, PASSWORD_DEFAULT);
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
     // Check if username and password match
-    $sql = "SELECT * FROM user WHERE User_Name='$username' AND Pass_Word='$password'";
+    $sql = "SELECT Pass_Word FROM user WHERE User_Name='$username'";
     $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $storedHash = $row['Pass_Word'];
 
-    if (mysqli_num_rows($result) == 1) {
+    if (password_verify($password, $storedHash)) {
         // Login successful
-        $row = mysqli_fetch_assoc($result);
-        //$_SESSION['user_id'] = $row['id'];
-        session_start(); // Start session
+        session_start();
         $_SESSION['user'] = $username;
         header("Location: Menu.php");
         exit();

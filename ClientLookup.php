@@ -61,7 +61,7 @@ checkForUser();
     } // checks for valid user established at login page, if not found sent back to login
     echo "
         <form method='post' action=''>
-        <input type='number' id='' name='clCode' placeholder='Search' required>
+        <input type='text' id='' name='clCode' placeholder='Search' required>
         <input type='submit' name='searched' value='Search'>
         </form>
         <a href='ClientCreation2.php'><button class='button' style='vertical-align: middle;'><span>New Client</span></button></a>
@@ -79,8 +79,10 @@ checkForUser();
 
     <th>Customer ID</font></th>
 
-    <th>Company Name</font></th>
+    <th>Client Name</font></th>
 
+    <th>Company Name</font></th>
+<!--
     <th>Phone</font></th>
 
     <th>Phone 2</font></th>
@@ -90,18 +92,19 @@ checkForUser();
     <th>Mailing</font></th>
 
     <th>Billing</font></th>
-
+-->
     <th>Notes</font></th>
 
     </tr>
 ";
 $sqlSetup = "SELECT Client_ID FROM client";
 $resultSetup = $conn->query($sqlSetup);
+unset($_SESSION["client"]);
 //grabs all client IDs 
 
 if (isset($_POST['searched'])){
-	$id = $_POST['clCode'];
-	searchLine($id);
+    $id = mysqli_real_escape_string($conn, $_POST['clCode']);
+	searchId($id);
     //if the button to search for client id has been clicked, it takes the value
     //from the input and searches the database for it in the searchLine function
 } else if ($resultSetup or isset($_POST['reset'])) {
@@ -112,38 +115,73 @@ if (isset($_POST['searched'])){
         //on page loadup or if the reset button is clicked it calls the function lineLoop
         //for every client ID that exists in the database 
 }
-function searchLine($id){
+function searchId($id){
     //this searches for an individual client code
-	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
+    $sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID = '".$id."'";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
     //grabs a bunch of data corresponding with the client code to be displayed on the table
     if ($result->num_rows > 0) {
-    echo "<tr><td>
-<form method='get' action='CoverageList.php'>
-<input type='submit' name='clientValue' value='{$row['Client_ID']}'></td>";
-//creates a form for the row of data that when the submit button is clicked it passes
-//the ID to the next page
-    echo"<td>"; echo $row['Alias']; echo"</td>
-    <td>"; echo $row['Phone_Number']; echo"</td>
-    <td>"; echo $row['Location_Phone']; echo"</td>
-    <td>"; echo $row['Email_Address']; echo "</td>
-    <td>"; echo $row['Mailing_Address'];echo "</td>
-    <td>"; echo $row['Physical_Address']; echo"</td>
-    <td>"; echo $row['Notes']; echo"</td>
-    </tr>";
+        dispInfo($id, $row);
+    //displays a table with data pulled from the database
+    }   else{ searchFName($id);} // this code appears when a search for a client ID is invaid
+	}
+
+
+function searchFName($id){
+    //this searches for an individual client code
+    $sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_First_Name = '".$id."'";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $row = mysqli_fetch_assoc($result);
+    //grabs a bunch of data corresponding with the client code to be displayed on the table
+    if ($result->num_rows > 0) {
+        dispInfo($id, $row);
+        while ($row = $result->fetch_assoc())  {
+        dispInfo($id, $row);
+        }
+    //displays a table with data pulled from the database
+    }   else{ searchLName($id);} // this code appears when a search for a client ID is invaid
+	}
+
+
+function searchLName($id){
+    //this searches for an individual client code
+    $sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_Last_Name = '".$id."'";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $row = mysqli_fetch_assoc($result);
+    //grabs a bunch of data corresponding with the client code to be displayed on the table
+    if ($result->num_rows > 0) {
+        dispInfo($id, $row);
+        while ($row = $result->fetch_assoc())  {
+        dispInfo($id, $row);
+        }
+    //displays a table with data pulled from the database
+    }   else{ searchComp($id);} // this code appears when a search for a client ID is invaid
+	}
+
+function searchComp($id){
+    //this searches for an individual client code
+    $sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client_location.Alias = '".$id."'";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $row = mysqli_fetch_assoc($result);
+    //grabs a bunch of data corresponding with the client code to be displayed on the table
+    if ($result->num_rows > 0) {
+        dispInfo($id, $row);
+        while ($row = $result->fetch_assoc())  {
+        dispInfo($id, $row);
+        }
     //displays a table with data pulled from the database
     }   else{
 echo "<tr><td>ERROR</td>
 <td>NO</td>
 <td>CLIENT</td> 
-<td>CODE</td> 
-<td>FOUND</td>
+<td>FOUND</td> <!--
 <td></td>
 <td></td>
 <td></td>
+<td></td> -->
     </tr>";} // this code appears when a search for a client ID is invaid
-	}
+}
 
 function lineLoop($id){
     //dispays all clients on the table
@@ -152,19 +190,32 @@ function lineLoop($id){
     $row = mysqli_fetch_assoc($result);
     //selects data
     if ($result->num_rows > 0) {
-    echo "<tr><td>
-<form method='get' action='CoverageList.php'>
-<input type='submit' name='clientValue' value='$id'></td>
-	<td>"; echo $row['Alias']; echo"</td>
-    <td>"; echo $row['Phone_Number']; echo"</td>
-    <td>"; echo $row['Location_Phone']; echo"</td>
-    <td>"; echo $row['Email_Address']; echo "</td>
-    <td>"; echo $row['Mailing_Address'];echo "</td>
-    <td>"; echo $row['Physical_Address']; echo"</td>
-    <td>"; echo $row['Notes']; echo"</td>
-    </tr>";}
-    }// same jazz as last function
+        dispInfo($id, $row);
+    }
+}// same jazz as last function
 	
+
+
+
+    function dispInfo($id, $row){
+        echo "<tr><td>
+        <form method='get' action='ClientMenu.php'>
+        <input type='submit' name='clientValue' value='{$row['Client_ID']}'></td>";
+        //creates a form for the row of data that when the submit button is clicked it passes
+        //the ID to the next page
+        echo"<td>"; echo $row['Client_First_Name'] . " " . $row['Client_Last_Name']; echo"</td>
+        <td>"; echo $row['Alias']; echo"</td> <!--
+        <td>"; echo $row['Phone_Number']; echo"</td>
+        <td>"; echo $row['Location_Phone']; echo"</td>
+        <td>"; echo $row['Email_Address']; echo "</td>
+        <td>"; echo $row['Mailing_Address'];echo "</td>
+        <td>"; echo $row['Physical_Address']; echo"</td> -->
+        <td>"; echo $row['Notes']; echo"</td>
+        </tr>";
+    }
+
+
+
 	?>
     </table>
     </div>
