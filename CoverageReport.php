@@ -77,7 +77,7 @@
  //$id = $_GET['clientValue'];
  $id = $_SESSION["client"];
  $username = $_SESSION["user"];
- $sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
+ $sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID='$id'";
  $result = mysqli_query($conn, $sql);
  $row = mysqli_fetch_assoc($result);
  //grabs the passed ID value and also the user name of the broker for the form
@@ -107,6 +107,7 @@ echo"
         </table><br>
         <table border='1' bgcolor='white' class='lowerTable'>
             <tr><th>Coverage</th><th>Description</th><th>Amount Covered</th></tr>";
+            /*
                 $sqlSetup = "SELECT Coverage_ID FROM coverage";
                 $resultSetup = $conn->query($sqlSetup);
                 //grabs all the coverages avaliable
@@ -114,13 +115,42 @@ echo"
 			        $coverageID = $row['Coverage_ID'];
                     lineLoop($coverageID, $id);
                 }
+                */
+                $list = array();
+                $sqlSelect = "SELECT * FROM category";
+                $resultSelect = $conn->query($sqlSelect);
+                while ($rowSelect = mysqli_fetch_assoc($resultSelect)){
+                    $sqlSetup = "SELECT * FROM location_category WHERE Location_ID = '$id'";
+                    $resultSetup = $conn->query($sqlSetup);
+                    while ($row = mysqli_fetch_assoc($resultSetup))  {
+                        if ($row[$rowSelect['Category_Name_Insert']] == 1){
+                            $placeholder = $rowSelect['Category_ID'];
+                            $sql1 = "SELECT * FROM coverage";
+                            $result1 = $conn->query($sql1);
+                            while ($row1 = mysqli_fetch_assoc($result1)){
+                                $sql3 = "SELECT * FROM category_coverages WHERE Category_ID = $placeholder";
+                                $result3 = $conn->query($sql3);
+                                while ($row3 = mysqli_fetch_assoc($result3)){
+                                    if ($row3[$row1['Coverage_Name_Insert']] == 1){
+                                        if(!in_array($row1['Coverage_Name_Insert'], $list)){
+                                            //echo $row1['Coverage_Name'] . "<br>";
+                                            $list[] = $row1['Coverage_Name_Insert'];
+                                            $coverageID = $row1['Coverage_ID'];
+                                            lineLoop($coverageID, $id);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
 
                 function lineLoop($coverageID, $id){
                     $sql = "SELECT * FROM coverage WHERE Coverage_ID=$coverageID";
                     $result = mysqli_query($GLOBALS['conn'], $sql);
                     $row = mysqli_fetch_assoc($result);
                     if ($result->num_rows > 0) { //displays coverage info and such
-                            $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = $id";
+                            $sql2 = "SELECT * FROM client_coverage WHERE Client_ID = '$id'";
                             $result2 = mysqli_query($GLOBALS['conn'], $sql2);
                             $row2 = mysqli_fetch_assoc($result2);
                             $placeholder = $row2[$row['Coverage_Name_Insert']];

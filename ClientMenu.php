@@ -8,7 +8,7 @@ checkForUser();
 	$id1 = $_GET['clientValue'];
     $_SESSION["client"] = $id1;}
     $id =  $_SESSION["client"];
- $sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
+ $sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID='$id'";
  $result = mysqli_query($conn, $sql);
  $row = mysqli_fetch_assoc($result);
 ?>
@@ -33,7 +33,7 @@ checkForUser();
     <div class="Menu">
         <div class="Menu">
             <button class="button" onclick="document.location='CoverageList.php'"style="vertical-align: middle;"><span>Coverage List</span></button><br><br>
-            <button class="button" onclick="document.location=''"style="vertical-align: middle;"><span>Edit Client</span></button><br><br>
+            <button class="button" onclick="document.location='ClientEdit.php'"style="vertical-align: middle;"><span>Edit Client</span></button><br><br>
             <button class="button" onclick="document.location='ClientLookup.php'"style="vertical-align: middle;"><span>Client Lookup</span></button><br><br>
         </div>
     </div>

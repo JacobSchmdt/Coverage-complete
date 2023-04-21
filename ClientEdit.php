@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Client Creation</title>
+    <title>Client Editor</title>
     <link rel="stylesheet" href="ClientCreation.css">
   <?php
 include("db.php");
@@ -45,7 +45,7 @@ checkForUser();
 <body>
     <div class="nav">
 
-        <h2> New Client Creation</h2>
+        <h2> Client Editor</h2>
 
 	<form action="" target="_self" method="POST">
 	<?php
@@ -57,36 +57,37 @@ checkForUser();
         }
     } 
 	$username = $_SESSION["user"];
-
+	$id = $_SESSION["client"];
 	$query = "SELECT User_ID FROM user WHERE User_Name='$username';";
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
 echo "Broker ID:"; echo $row['User_ID']; echo "<br></br>";
-	?>
-		
-		<input type="text" id="Fname" name="Fname" value="" required placeholder="First Name"><br><br>
 
-
-		<input type="text" id="Lname" name="Lname" value="" required placeholder="Last Name"><br><br>
-
-		
-		<input type="text" id="Company" name="Company" value="" required placeholder="Company"><br><br>
-
-		<input type="text" id="Provider" name="Provider" value="" required placeholder="Provider"><br><br>
-		
-
-		<input type="text" id="Client_Code" name="Client_Code" required placeholder="Client Code"><br><br>
-		<!--
-		<input type="text" id="Email_Adress" name="Email_Address" required placeholder="Email Address">
-		<br>
-		<br>
-		
-		<input type="number" id="Phone_Number" name="Phone_Number" required placeholder="Phone Number">
-		<br>
-		<br>
-		-->
-		<textarea id="Description" name="Description" rows="4" cols="100" placeholder="Description"></textarea><br>
+$sql2 = "SELECT * FROM client WHERE Client_ID = '$id'";
+$result2 = mysqli_query($GLOBALS['conn'], $sql2);
+$row2 = mysqli_fetch_assoc($result2);
+$sql3 = "SELECT * FROM client_location WHERE Client_ID = '$id'";
+$result3 = mysqli_query($GLOBALS['conn'], $sql3);
+$row3 = mysqli_fetch_assoc($result3);
 	
+		
+		echo "<label for 'Fname'>First Name</label>
+		<input type='text' id='Fname' name='Fname' value='{$row2['Client_First_Name']}' required placeholder='First Name'><br><br>";
+
+		echo "<label for 'Lname'>Last Name</label>
+		<input type='text' id='Lname' name='Lname' value='{$row2['Client_Last_Name']}' required placeholder='Last Name'><br><br>";
+
+		echo "<label for 'Company'>Company</label>		
+		<input type='text' id='Company' name='Company' value='{$row3['Alias']}' required placeholder='Company'><br><br>";
+
+		echo "<label for 'Provider'>Provider</label>
+		<input type='text' id='Provider' name='Provider' value='{$row3['Provider']}' required placeholder='Provider'><br><br>";
+		
+		echo "<label for 'Client_Code'>Client Code</label>	
+		<input type='text' id='Client_Code' name='' value='{$row2['Client_ID']}' readonly ><br><br>";
+		echo "<label for 'Description'>Description</label>
+		<textarea id='Description' name='Description' rows='4' cols='100' placeholder='Description'>{$row2['Notes']}</textarea><br>";
+?>
 		<div class="form-group">
 		<?php
 		
@@ -94,25 +95,28 @@ echo "Broker ID:"; echo $row['User_ID']; echo "<br></br>";
         $resultSetup = $conn->query($sqlSetup);		
         while ($row = $resultSetup->fetch_assoc()){
 		$categoryID = $row['Category_ID'];
-		lineLoop($categoryID);
+		lineLoop($categoryID, $id);
 		}
 		
-		function lineLoop($categoryID){
+		function lineLoop($categoryID, $id){
                     $sql = "SELECT * FROM category WHERE Category_ID=$categoryID";
                     $result = mysqli_query($GLOBALS['conn'], $sql);
                     $row = mysqli_fetch_assoc($result);
                     if ($result->num_rows > 0) {
+						$sql4 = "SELECT * FROM location_category WHERE Location_ID = '$id'";
+						$result4 = mysqli_query($GLOBALS['conn'], $sql4);
+						$row4 = mysqli_fetch_assoc($result4);
 						echo $row['Category_Name'];
-						echo "<input type='checkbox' name='{$row['Category_Name_Insert']}' value='1'> <br> ";
+						echo "<input type='checkbox' name='{$row['Category_Name_Insert']}' value='1'"; if($row4[$row['Category_Name_Insert']] > 0) echo "checked='checked'"; echo"> <br> ";
 					}
 		}
 		?>
 		<input type="submit" name="Save" class="btnSave" value="Submit">
-        <button class="button" onclick="document.location='ClientLookup.php'"style="vertical-align: middle;"><span>Client Lookup</span></button>
-		<button class="button" onclick="document.location='Menu.php'"style="vertical-align: middle;"><span>Menu</span></button>
-		<button class="button" onclick="document.location='logOut.php'"style="vertical-align: middle;"><span>Log Out</span></button><br><br>		
-		</div>
 	    </form>
+		</div>
+		<button class="button" onclick="document.location='ClientLookup.php'"style="vertical-align: middle;"><span>Client Lookup</span></button>
+		<button class="button" onclick="document.location='ClientMenu.php'"style="vertical-align: middle;"><span>Client Menu</span></button>
+		
 <?php
 
 
@@ -130,22 +134,13 @@ $brokerID = $_SESSION["user"];
 
 
 //queries to insert and update specific tables to ensure data shows up in proper places
-$query = "SELECT * FROM client WHERE Client_ID = '$CCode'";
-$result = mysqli_query($conn, $query);
-if (mysqli_num_rows($result) > 0) {
-      echo "Error: Broker exists already.";
-}else {
+$query2 = "UPDATE client SET Company_Name = '$companyName', Client_First_Name = '$CFName', Client_Last_Name = '$CLName', Notes = '$description'
+ WHERE Client_ID = '$id'";
 
-$query2 = "INSERT INTO client (Client_ID, Mailing_Address, Company_Name, Client_First_Name, Client_Last_Name, Email_Address, Phone_Number, Broker_ID, Notes)
- VALUES ('$CCode','$mailingAddress','$companyName','$CFName','$CLName','$emailAddress','$phoneNumber','$brokerID', '$description')";
-
- $query3 = "INSERT INTO client_location (Location_ID, Client_ID, Alias, Physical_Address, Location_Phone, Provider) VALUES ('$CCode', '$CCode', '$companyName', '$mailingAddress', '$phoneNumber', '$prov')";
-
- $query4 = "INSERT INTO client_coverage (Client_ID) VALUES ('$CCode')";
-
- $query5 = "INSERT INTO location_category (Location_ID) VALUES ('$CCode')";
+ $query3 = "UPDATE client_location SET Alias = '$companyName', Provider = '$prov'
+ WHERE Location_ID = '$id'";
   
- $bruh = mysqli_query($conn, $query2) && mysqli_query($conn, $query3) && mysqli_query($conn, $query4) && mysqli_query($conn, $query5);
+ $bruh = mysqli_query($conn, $query2) && mysqli_query($conn, $query3);
 
 
 $sqlSetup = "SELECT Category_ID FROM category";
@@ -164,10 +159,10 @@ $resultSetup = $conn->query($sqlSetup);
 		$placeholder = $row['Category_Name_Insert'];
 		$insertQuery = "UPDATE location_category
 		SET $placeholder = $myballs
-		WHERE Location_ID = '$CCode'";
+		WHERE Location_ID = '$id'";
 		$result = mysqli_query($GLOBALS['conn'], $insertQuery);
 }
-    header("Location: ClientLookup.php");
+    header("Location: ClientMenu.php");
 	/*
  //Ensures that all the queries are successful
 if(mysqli_query($conn, $query2) && mysqli_query($conn, $query3) && mysqli_query($conn, $query4) && mysqli_query($conn, $query5) && mysqli_query($conn, $query6)){
@@ -179,7 +174,7 @@ else {
     echo "Error inserting Client";
 }*/
 	}
-}
+	
 	
 	?>
 </body>

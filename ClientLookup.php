@@ -185,7 +185,7 @@ echo "<tr><td>ERROR</td>
 
 function lineLoop($id){
     //dispays all clients on the table
-	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID=$id";
+	$sql = "SELECT * FROM client, client_location WHERE client.Client_ID = client_location.Client_ID AND client.Client_ID='$id'";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     $row = mysqli_fetch_assoc($result);
     //selects data
